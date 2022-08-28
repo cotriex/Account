@@ -1,0 +1,429 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block contenido %}
+<div class="row justify-content-center">
+
+    <div class="col-10">
+        <div class="container p-2">
+            <form class="card" method="POST" id="creaRol">
+                {% csrf_token %}
+                <div class="card-header">
+                    <h4 class="text-azure">Crear Nuevo Rol de Pagos</h4>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <div class="row justify-content-center">
+
+                                <div class="col-6">
+                                    {{ form.identificacion|as_crispy_field }}
+                                </div>
+                               
+                                <div class="col-1">
+                                    {{ form.mes|as_crispy_field }}
+                                </div>
+                                <div class="col-1">
+                                    {{ form.ano|as_crispy_field }}
+                                </div>
+                                <div class="col-2">
+                                    <label>Salario Nominal</label>
+                                    <div>
+                                        <input type="text" name="SalarioNominal" step="any"
+                                        style="border: none; border-bottom: 1px solid green"
+                                        class= "form-control" readonly="" required="" id="SalarioNominal">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-12 text-center text-primary">
+                            <h4>Rol de Pagos</h4>
+                        </div>
+                        <div class="col-xl-4">
+                            <div class="row">
+
+                                <div class="col-md-6 col-xl-12">
+                                    <div class="row justify-content-center">
+                                        <div class="col-12 text-center text-primary">
+                                            <h5>Ingresos</h5>
+                                        </div>
+                                        <div class="form-group pt-2 col-4 mb-0">
+                                            {{ form.dias|as_crispy_field }}
+                                        </div>
+                                        <div id="div_id_bonoAdicional" class=" form-group pt-2 col-4 ">
+                                            <label>Salario Mensual</label>
+                                            <div>
+                                                <input type="text" name="SalarioMensual" step="any"
+                                                style="border: none; border-bottom: 1px solid green"
+                                                class= "form-control" required="" id="SalarioMensual">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row pt-2 justify-content-center">
+                                        <div class="form-group col-4 mb-0">
+                                            {{ form.horas25|as_crispy_field }}
+                                        </div>
+                                        <div class="form-group col-4 mb-0">
+                                            {{ form.valor25|as_crispy_field }}
+                                        </div>
+                                    </div>
+                                    <div class="row pt-2 justify-content-center">
+                                        <div class="form-group col-4 mb-0">
+                                            <div class="col-12">
+                                                {{ form.horas50|as_crispy_field }}
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-4 mb-0">
+                                            {{ form.valor50|as_crispy_field }}
+                                        </div>
+                                    </div>
+                                    <div class="row  pt-2 justify-content-center">
+                                        <div class="form-group col-4 mb-0">
+                                            {{ form.extraHoras100|as_crispy_field }}
+                                        </div>
+                                        <div class="form-group col-4 mb-0">
+                                            {{ form.valor100|as_crispy_field }}
+                                        </div>
+                                    </div>
+                                    <div class="row pt-2 justify-content-center">
+                                        <div class="form-group col-4 mb-0 justify-content-center">
+                                            {{ form.comisiones|as_crispy_field }}
+                                        </div>
+
+                                        <div class="col form-group col-4 mb-0">
+                                            {{ form.bonoAdicional|as_crispy_field }}
+                                        </div>
+                                    </div>
+                                    <div class="row  pt-2 justify-content-center">
+                                        <div id="div_id_bonoAdicional" class="form-group text-blue col-8 justify-content-center">
+                                            <label>Total Ingresos</label>
+                                            <div>
+                                                <input type="text" name="total_ingresos" step="any"
+                                                    class=" col-3 numberinput form-control text-blue bg-azure" required=""
+                                                    id="total_ingresos">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-4">
+                            <div class="row">
+                                <div class="col-md-6 col-xl-12">
+                                    <div class="row justify-content-center">
+                                        <div class="col-12 text-center text-primary">
+                                            <h5>Egresos</h5>
+                                        </div>
+                                        <div class="row  pt-2 justify-content-center">
+                                            <div class="form-group col-4 mb-0">
+                                                {{ form.IESSpersonal|as_crispy_field }}
+                                            </div>
+
+                                            <div class="form-group col-4 mb-0">
+                                                {{ form.retencionIR|as_crispy_field }}
+                                            </div>
+                                        </div>
+                                        <div class="row  pt-2 justify-content-center">
+                                            <div class="form-group col-4 mb-0">
+                                                {{ form.prestamoIESS|as_crispy_field }}
+                                            </div>
+
+                                            <div class="form-group col-4 mb-0">
+                                                {{ form.extConyuges|as_crispy_field }}
+                                            </div>
+                                        </div>
+                                        <div class="row  pt-2 justify-content-center">
+                                            <div class="form-group col-4 mb-0">
+                                                {{ form.otrosDescuentos|as_crispy_field }}
+                                            </div>
+
+                                            <div class="form-group col-4 mb-0">
+                                                {{ form.multas|as_crispy_field }}
+                                            </div>
+                                        </div>
+                                        <div class="row  pt-2 justify-content-center">
+                                            <div class="form-group col-4 mb-0">
+                                                {{ form.anticipos|as_crispy_field }}
+                                            </div>
+
+                                            <div class="form-group col-4 mb-0">
+                                                {{ form.otrosPrestamos|as_crispy_field }}
+                                            </div>
+                                        </div>
+                                        <div class="row  pt-2 justify-content-center">
+                                            <div class="form-group text-red col-8 mb-0">
+                                                <label>Total Egresos</label>
+                                                <div>
+                                                    <input type="text" name="total_egresos" step="any"
+                                                        class="numberinput form-control bg-pink" required="" id="total_egresos">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-4">
+                            <div class="row">
+                                <div class="col-md-6 col-xl-12">
+                                    <div class="row justify-content-center">
+                                        <div class="col-12 text-center text-primary">
+                                            <h5>Otros Ingresos</h5>
+                                        </div>
+
+                                        <div class="row  pt-2 justify-content-center">
+                                            <div class="form-group col-4 mb-0">
+                                                {{ form.transporte|as_crispy_field }}
+                                            </div>
+
+                                            <div class="form-group col-4 mb-0">
+                                                {{ form.movilizacion|as_crispy_field }}
+                                            </div>
+                                        </div>
+                                        <div class="row  pt-2 justify-content-center">
+                                            <div class="form-group col-4 mb-0">
+                                                {{ form.pagoXIII|as_crispy_field }}
+                                            </div>
+
+                                            <div class="form-group col-4 mb-0">
+                                                {{ form.pagoXIV|as_crispy_field }}
+                                            </div>
+                                        </div>
+                                        <div class="row  pt-2 justify-content-center">
+                                            <div class="form-group col-4 mb-0">
+                                                {{ form.pagoFR|as_crispy_field }}
+                                            </div>
+
+                                            <div class="form-group col-4 mb-0">
+                                                {{ form.pagoVacaciones|as_crispy_field }}
+                                            </div>
+                                        </div>
+                                        <div class="row  pt-2 justify-content-center">
+                                            <div class="form-group col-8 mb-0">
+                                                <div id="div_id_bonoAdicional" class="form-group text-blue mb-0">
+                                                    <label>Total Otros Ingresos</label>
+                                                    <div>
+                                                        <input type="text" name="total_oIngresos" step="any"
+                                                            class="numberinput form-control text-blue bg-azure" required=""
+                                                            id="total_oIngresos">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row  pt-2 justify-content-center">
+                                            <div class="form-group col-8 mb-0">
+                                                <div id="div_id_bonoAdicional" class="form-group text-red mb-0">
+                                                    <label>Total a Pagar</label>
+                                                    <div>
+                                                        <input type="text" name="total_pago" step="any"
+                                                            class="numberinput form-control bg-pink" required=""
+                                                            id="total_pago">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="row justify-content-center">
+                            <div class="col-xl-9 ">
+                                <div class="row">
+                                    <div class="col-md-6 col-xl-12">
+                                        <div class="row justify-content-center">
+                                            <div class="col-12 text-center text-primary">
+                                                <h4>Rol de Provisiones</h4>
+                                            </div>
+                                            <div class="col-12 text-center">
+
+                                                <div class="row  pt-2 justify-content-center">
+                                                    <div class="form-group col-2 mb-0">
+                                                        {{ form.valorXIII|as_crispy_field }}
+                                                    </div>
+
+                                                    <div class="form-group col-2 mb-0">
+                                                        {{ form.valorXIV|as_crispy_field }}
+                                                    </div>
+                                                    <div class="form-group col-2 mb-0">
+                                                        {{ form.vacaciones|as_crispy_field }}
+                                                    </div>
+                                                    <div class="form-group col-2 mb-0">
+                                                        {{ form.fondoReserva|as_crispy_field }}
+                                                    </div>
+                                                    <div class="form-group col-2 mb-0">
+                                                        {{ form.IESSpatr|as_crispy_field }}
+                                                    </div>
+                                                    <div class="form-group col-2 mb-0">
+                                                        <div id="div_id_bonoAdicional" class="form-group text-red">
+                                                            <label>Total Provisiones</label>
+                                                            <div>
+                                                                <input type="text" name="totalProvisiones" step="any"
+                                                        class="numberinput form-control bg-pink" required="" id="totalProvisiones">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer justify-content-right">
+                        <div class="d-flex">
+                            <button type="submit" class="mr-2 btn  bg-blue">Editar</button>
+                            <a type="button" href="{%url 'empleados:listaNomina'%}"
+                                class="btn bg-danger">Cancelar</a>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+
+
+
+
+
+{% endblock %}
+
+{%block script%}
+
+<script>
+    function getCookie(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                // Does this cookie string begin with the name we want?
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        console.log(cookieValue)
+        return cookieValue;
+    }
+</script>
+<script>
+    function cargar() {
+
+        var ident = document.getElementById("id_identificacion").value;
+        var data = { id: ident }
+
+
+        fetch("{% url 'empleados:empleadorol' %}", {
+            method: "POST",
+            body: JSON.stringify(data),
+            headers: {
+                'Content-type': 'application/json; charset=UTF-8',
+                'X-CSRFToken': getCookie('csrftoken'),
+
+            },
+        }).then(function (response) {
+            return response.json()
+        }).then(
+            function (data) {
+
+                var salario = data.data[0].salarioNominal
+                var nc = data.data[0].primerNombre + " " + data.data[0].segundoNombre + " " + data.data[0].primerApellido + " " + data.data[0].segundoApellido
+
+                var acmXIII = data.data[0].acumulacionXIII
+                var acmXIV = data.data[0].acumulacionXIV
+                var acmFR = data.data[0].acumulacionFR
+
+                var dias = data.data[0].fechaInicio
+                var fechainicio = new Date(dias)
+
+
+                var año = parseInt(document.getElementById("id_ano").value)
+                console.log(año)
+                var mes = parseInt(document.getElementById("id_mes").value)
+                if (mes === 2) {
+                    fechaf = new Date(año, mes - 1, 28)
+                    fechai = new Date(año, mes - 1, 1)
+                }
+                else {
+                    fechaf = new Date(año, mes - 1, 30)
+                    fechai = new Date(año, mes - 1, 1)
+                };
+                var j = parseInt(fechai - fechainicio) / (1000 * 3600 * 24)
+
+                console.log(j)
+                if (j <= -30) {
+                    alert("El empleado esta registrado con fecha posterior al registro del rol de pagos, por favor tomar las medidas respectivas")
+
+                }
+                else {
+                    var dias = parseInt(Math.abs(fechaf - fechainicio) / (1000 * 3600 * 24) + 1)
+                    if (dias > 30) {
+                        dias = 30
+                        $("#id_dias").val(dias)
+                    }
+                    else {
+                        $("#id_dias").val(dias)
+                    }
+
+
+                }
+
+                recarga(salario, nc, acmXIII, acmXIV, acmFR)
+
+            }
+        )
+
+
+    };
+
+</script>
+<script>
+    $(document).ready(function() {
+    $('.select2').select2({
+        theme:"bootstrap4",
+        language: "es"
+    });
+    cargar()
+});
+
+</script>
+<script>
+    $("#creaRol").change(function () {
+        cargar()
+    });
+
+    
+    
+</script>
+<script>
+$("#select2-id_identificacion-container").change(function () {
+        cargar()
+    });
+</script>
+<script>
+    window.onload = function () {
+        
+        cargar()
+    }
+</script>
+
+
+
+{%endblock script%}

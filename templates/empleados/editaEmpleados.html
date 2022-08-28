@@ -1,0 +1,191 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+
+
+{% block contenido %}
+<div class="card mt-2">
+    <div class="card-header bg-azure shadow">
+        <div class="col-12  text-center ">
+            <h2>EDITA NUEVO EMPLEADO</h2>
+
+        </div>
+    </div>
+
+    <div class="card-body m-2">
+        <form class="" method="POST">
+            {% csrf_token%}
+            <div class="row col-6">
+                <h5 class="p-2 text-azure">
+                    Identificación</h5>
+                <div class="form-group col-4 mb-0">
+                    {{ form.tipoIdentificacion|as_crispy_field }}
+                </div>
+
+                <div class="form-group col-4 mb-0">
+                    {{ form.identificacion|as_crispy_field }}
+
+                </div>
+                <div class="form-group col-4 mb-0">
+                    {{ form.identificacionIESS|as_crispy_field }}
+
+                </div>
+            </div>
+            <div class="row">
+
+                <h5 class="p-2 text-azure">
+                    Nombres y Apellidos del Empleado
+                </h5>
+
+                <div class="form-group col-2 mb-0">
+                    {{ form.primerNombre|as_crispy_field }}
+
+                </div>
+                <div class="form-group col-2 mb-0">
+                    {{ form.segundoNombre|as_crispy_field }}
+
+                </div>
+                <div class="form-group col-2 mb-0">
+                    {{ form.primerApellido|as_crispy_field }}
+
+                </div>
+                <div class="form-group col-2 mb-0">
+                    {{ form.segundoApellido|as_crispy_field }}
+
+                </div>
+
+            </div>
+            <div class="row mb-2">
+                <h5 class="p-2 text-azure">
+                    Información relevante del empleado
+                </h5>
+
+                <div class="form-group col-2 mb-0">
+                    {{ form.fechaNacimiento|as_crispy_field }}
+
+                </div>
+
+                <div class="form-group col-2 mb-0">
+                    {{ form.nivelInstruccion|as_crispy_field }}
+
+                </div>
+                <div class="form-group col-1 mb-0">
+                    {{ form.genero|as_crispy_field }}
+
+                </div>
+                <div class="form-group col-2 mb-0">
+                    {{ form.estadoCivil|as_crispy_field }}
+
+                </div>
+                <div class="form-group col-1 mb-0">
+                    {{ form.telefono|as_crispy_field }}
+
+                </div>
+                <div class="form-group col-3 mb-0">
+                    {{ form.direccion|as_crispy_field }}
+
+                </div>
+                <div class="form-group col-1 mb-0">
+                    {{ form.cargasFamiliares|as_crispy_field }}
+
+                </div>
+            </div>
+            <div class="row">
+                <h5 class="p-2 text-azure">
+                    Información interna del empleado
+                </h5>
+
+                <div class="form-group col-2 mb-0">
+                    {{ form.tipoContrato|as_crispy_field }}
+
+                </div>
+                <div class="form-group col-2 mb-0">
+                    {{ form.tipoSalario|as_crispy_field }}
+
+                </div>
+                <div class="form-group col-2 mb-0">
+                    {{ form.salarioNominal|as_crispy_field }}
+
+                </div>
+                <div class="form-group col-2 mb-0">
+                    {{ form.departamento|as_crispy_field }}
+
+                </div>
+                <div class="form-group col-2 mb-0">
+                    {{ form.centroCostos|as_crispy_field }}
+
+                </div>
+                <div class="form-group col-4 mb-0 mt-2">
+                    {{ form.cargo|as_crispy_field }}
+
+                </div>
+            </div>
+            <div class="row">
+                <h5 class="p-2 text-azure">
+                    Beneficios Empleado
+                </h5>
+                <div class="form-group col-2 mb-0">
+                    {{ form.acumulacionXIII|as_crispy_field }}
+
+                </div>
+                <div class="form-group col-2 mb-0">
+                    {{ form.acumulacionXIV|as_crispy_field }}
+
+                </div>
+                <div class="form-group col-2 mb-0">
+                    {{ form.acumulacionFR|as_crispy_field }}
+
+                </div>
+                <div class="form-group col-2 mb-0">
+                    {{ form.fechaInicio|as_crispy_field }}
+
+                </div>
+                <div class="form-group col-2 mb-0">
+                    {{ form.fechaFin|as_crispy_field }}
+                </div>
+                <div class="form-group col-2 form-switch  mb-0 p-4">
+                    {{ form.vigente|as_crispy_field }}
+
+                </div>
+            </div>
+            <div class="card-footer">
+
+
+
+                <div class="d-flex justify-content-end">
+                    <button type="submit" class="mr-4 btn bg-lime d-flex justify-content-end">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-users" width="24"
+                            height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                            <circle cx="9" cy="7" r="4"></circle>
+                            <path d="M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2"></path>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                            <path d="M21 21v-2a4 4 0 0 0 -3 -3.85"></path>
+                        </svg>
+                        Editar</button>
+
+                    <a type="button" href="{%url 'empleados:listaEmpleado'%}" class="btn bg-danger ml-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-circle-x" width="24"
+                            height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                            <circle cx="12" cy="12" r="9"></circle>
+                            <path d="M10 10l4 4m0 -4l-4 4"></path>
+                        </svg>Cancelar
+                    </a>
+                </div>
+            </div>
+
+        </form>
+    </div>
+
+</div>
+<small>
+    <p class="text-pink">Nota: edite el empleado en sus caracteristicas principales, tener en
+        consideración que cualquier
+        cambio genera procesos en el rol de pagos que deberia actualizar </p>
+</small>
+
+
+{% endblock %}

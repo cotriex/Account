@@ -1,0 +1,474 @@
+{%extends 'base.html'%}
+{% load crispy_forms_tags %}
+
+{% block contenido%}
+<div class="m-3">
+    <div class="card col-12 ">
+        <div class="container">
+            <div class="row m-3">
+
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="comp-tab" data-bs-toggle="tab" data-bs-target="#comp"
+                            type="button" role="tab" aria-controls="comp" aria-selected="true">Compañia</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link " id="centroCostos-tab" data-bs-toggle="tab"
+                            data-bs-target="#centroCostos" type="button" role="tab" aria-controls="centroCostos"
+                            aria-selected="false">Centro de Costos</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="dpto-tab" data-bs-toggle="tab" data-bs-target="#dpto" type="button"
+                            role="tab" aria-controls="dpto" aria-selected="false">Departamento</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="dctos-tab" data-bs-toggle="tab" data-bs-target="#dctos"
+                            type="button" role="tab" aria-controls="dctos" aria-selected="false">Documento</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="titem-tab" data-bs-toggle="tab" data-bs-target="#titem"
+                            type="button" role="tab" aria-controls="titem" aria-selected="false">Tipo Item</button>
+                    </li>
+
+
+                </ul>
+                <div class="tab-content m-3" id="myTabContent">
+                    <div class="tab-pane fade show active" id="comp" role="tabpanel" aria-labelledby="comp-tab">
+                        <div class="col-5">
+                            <table class="table table-bordered table-striped  bg-light text-blue">
+
+                                <button type="button" class="btn btn-sm btn-primary m-2" onclick="creaCia()">
+                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                        class="icon icon-tabler icon-tabler-circle-plus" width="24" height="24"
+                                        viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                                        stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                        <circle cx="12" cy="12" r="9"></circle>
+                                        <line x1="9" y1="12" x2="15" y2="12"></line>
+                                        <line x1="12" y1="9" x2="12" y2="15"></line>
+                                    </svg>
+                                    Agrega Compañia
+                                </button>
+                                <thead>
+                                    <tr>
+                                        <th class="bg-azure">Acciones</th>
+                                        <th class="bg-dark">ID</th>
+                                        <th class="bg-azure">Razon Social</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for c in form3 %}
+                                    <tr>
+                                        <td>
+                                            <a type="button" class="badge bg-azure"
+                                                onclick="EditaCia(`{% url 'config:editacia' c.id %}`)">
+                                                <svg xmlns="http://www.w3.org/2000/svg"
+                                                    class="icon icon-tabler icon-tabler-edit" width="24" height="24"
+                                                    viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+                                                    fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                                    <path
+                                                        d="M7 7h-1a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-1">
+                                                    </path>
+                                                    <path
+                                                        d="M20.385 6.585a2.1 2.1 0 0 0 -2.97 -2.97l-8.415 8.385v3h3l8.385 -8.415z">
+                                                    </path>
+                                                    <path d="M16 5l3 3"></path>
+                                                </svg></a>
+                                            <a type="button" class="badge bg-pink" href="#"
+                                                onclick="eliminaCia('{{c.id}}', '{{c.razonSocial}}')">
+                                                <svg xmlns="http://www.w3.org/2000/svg"
+                                                    class="icon icon-tabler icon-tabler-circle-x" width="24" height="24"
+                                                    viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+                                                    fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                                    <circle cx="12" cy="12" r="9"></circle>
+                                                    <path d="M10 10l4 4m0 -4l-4 4"></path>
+                                                </svg>
+                                            </a>
+                                        </td>
+                                        <td>
+                                            {{c.id}}
+                                        </td>
+                                        <td>
+                                            {{c.razonSocial}}
+                                        </td>
+                                    </tr>
+                                    {%endfor%}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade " id="centroCostos" role="tabpanel" aria-labelledby="centroCostos-tab">
+                        <div class="col-3">
+                            <table class="table table-bordered table-striped  bg-light text-blue">
+
+                                <button type="button" class="btn btn-sm btn-primary m-2" onclick="creaCentroCostos()">
+                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                        class="icon icon-tabler icon-tabler-circle-plus" width="24" height="24"
+                                        viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                                        stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                        <circle cx="12" cy="12" r="9"></circle>
+                                        <line x1="9" y1="12" x2="15" y2="12"></line>
+                                        <line x1="12" y1="9" x2="12" y2="15"></line>
+                                    </svg>
+                                    Agrega Centro de Costos
+                                </button>
+                                <thead>
+                                    <tr>
+                                        <th class="bg-azure">Acciones</th>
+                                        <th class="bg-dark">ID</th>
+                                        <th class="bg-azure">Descripcion</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for a in form1 %}
+                                    <tr>
+                                        <td>
+                                            <a type="button" class="badge bg-azure"
+                                                onclick="EditaCentroCostos(`{% url 'config:editacentro' a.id %}`)">
+                                                <svg xmlns="http://www.w3.org/2000/svg"
+                                                    class="icon icon-tabler icon-tabler-edit" width="24" height="24"
+                                                    viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+                                                    fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                                    <path
+                                                        d="M7 7h-1a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-1">
+                                                    </path>
+                                                    <path
+                                                        d="M20.385 6.585a2.1 2.1 0 0 0 -2.97 -2.97l-8.415 8.385v3h3l8.385 -8.415z">
+                                                    </path>
+                                                    <path d="M16 5l3 3"></path>
+                                                </svg></a>
+                                            <a type="button" class="badge bg-pink" href="#"
+                                                onclick="eliminaCentro('{{a.id}}', '{{a.descripcion}}')">
+                                                <svg xmlns="http://www.w3.org/2000/svg"
+                                                    class="icon icon-tabler icon-tabler-circle-x" width="24" height="24"
+                                                    viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+                                                    fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                                    <circle cx="12" cy="12" r="9"></circle>
+                                                    <path d="M10 10l4 4m0 -4l-4 4"></path>
+                                                </svg>
+                                            </a>
+                                        </td>
+                                        <td>
+                                            {{a.id}}
+                                        </td>
+                                        <td>
+                                            {{a.descripcion}}
+                                        </td>
+                                    </tr>
+                                    {%endfor%}
+                                </tbody>
+
+                            </table>
+
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="dpto" role="tabpanel" aria-labelledby="dpto-tab">
+                        <div class="col-4 ">
+                            <table class="table table-bordered table-striped  bg-light text-blue">
+
+                                <button type="button" class="btn btn-sm btn-primary m-2" onclick="creaDepartamento()">
+                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                        class="icon icon-tabler icon-tabler-circle-plus" width="24" height="24"
+                                        viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                                        stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                        <circle cx="12" cy="12" r="9"></circle>
+                                        <line x1="9" y1="12" x2="15" y2="12"></line>
+                                        <line x1="12" y1="9" x2="12" y2="15"></line>
+                                    </svg>
+                                    Agrega Departamento
+                                </button>
+                                <thead>
+                                    <tr>
+                                        <th class="bg-azure">Acciones</th>
+                                        <th class="bg-dark">ID</th>
+                                        <th class="bg-azure">Descripcion</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for b in form2 %}
+                                    <tr>
+                                        <td>
+                                            <a type="button" class="badge bg-azure"
+                                                onclick="EditaDepartamento(`{% url 'config:editadpto' b.id %}`)">
+                                                <svg xmlns="http://www.w3.org/2000/svg"
+                                                    class="icon icon-tabler icon-tabler-edit" width="24" height="24"
+                                                    viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+                                                    fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                                    <path
+                                                        d="M7 7h-1a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-1">
+                                                    </path>
+                                                    <path
+                                                        d="M20.385 6.585a2.1 2.1 0 0 0 -2.97 -2.97l-8.415 8.385v3h3l8.385 -8.415z">
+                                                    </path>
+                                                    <path d="M16 5l3 3"></path>
+                                                </svg></a>
+                                            <a type="button" class="badge bg-pink" href="#"
+                                                onclick="eliminaDpto('{{b.id}}', '{{b.descripcion}}')">
+                                                <svg xmlns="http://www.w3.org/2000/svg"
+                                                    class="icon icon-tabler icon-tabler-circle-x" width="24" height="24"
+                                                    viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+                                                    fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                                    <circle cx="12" cy="12" r="9"></circle>
+                                                    <path d="M10 10l4 4m0 -4l-4 4"></path>
+                                                </svg>
+                                            </a>
+                                        </td>
+                                        <td>
+                                            {{b.id}}
+                                        </td>
+                                        <td>
+                                            {{b.descripcion}}
+                                        </td>
+                                    </tr>
+                                    {%endfor%}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="dctos" role="tabpanel" aria-labelledby="dctos-tab">
+                        <div class="col-4 ">
+                            <table class="table table-bordered table-striped  bg-light text-blue">
+
+                                <button type="button" class="btn btn-sm btn-primary m-2" onclick="creaDocumento()">
+                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                        class="icon icon-tabler icon-tabler-circle-plus" width="24" height="24"
+                                        viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                                        stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                        <circle cx="12" cy="12" r="9"></circle>
+                                        <line x1="9" y1="12" x2="15" y2="12"></line>
+                                        <line x1="12" y1="9" x2="12" y2="15"></line>
+                                    </svg>
+                                    Agrega Documento
+                                </button>
+                                <thead>
+                                    <tr>
+                                        <th class="bg-azure">Acciones</th>
+                                        <th class="bg-dark">Codigo</th>
+                                        <th class="bg-azure">Documento</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for d in form4 %}
+                                    <tr>
+                                        <td>
+                                            <a type="button" class="badge bg-azure"
+                                                onclick="EditaDocumento(`{% url 'config:editadcto' d.codigo %}`)">
+                                                <svg xmlns="http://www.w3.org/2000/svg"
+                                                    class="icon icon-tabler icon-tabler-edit" width="24" height="24"
+                                                    viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+                                                    fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                                    <path
+                                                        d="M7 7h-1a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-1">
+                                                    </path>
+                                                    <path
+                                                        d="M20.385 6.585a2.1 2.1 0 0 0 -2.97 -2.97l-8.415 8.385v3h3l8.385 -8.415z">
+                                                    </path>
+                                                    <path d="M16 5l3 3"></path>
+                                                </svg></a>
+                                            <a type="button" class="badge bg-pink" href="#"
+                                                onclick="eliminaDcto('{{d.codigo}}', '{{d.descripcion}}')">
+                                                <svg xmlns="http://www.w3.org/2000/svg"
+                                                    class="icon icon-tabler icon-tabler-circle-x" width="24" height="24"
+                                                    viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+                                                    fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                                    <circle cx="12" cy="12" r="9"></circle>
+                                                    <path d="M10 10l4 4m0 -4l-4 4"></path>
+                                                </svg>
+                                            </a>
+                                        </td>
+                                        <td>
+                                            {{d.codigo}}
+                                        </td>
+                                        <td>
+                                            {{d.descripcion}}
+                                        </td>
+                                    </tr>
+                                    {%endfor%}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="titem" role="tabpanel" aria-labelledby="titem-tab">
+                        <div class="col-4 ">
+                            <table class="table table-bordered table-striped  bg-light text-blue">
+
+                                <button type="button" class="btn btn-sm btn-primary m-2" onclick="creaTitem()">
+                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                        class="icon icon-tabler icon-tabler-circle-plus" width="24" height="24"
+                                        viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                                        stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                        <circle cx="12" cy="12" r="9"></circle>
+                                        <line x1="9" y1="12" x2="15" y2="12"></line>
+                                        <line x1="12" y1="9" x2="12" y2="15"></line>
+                                    </svg>
+                                    Agrega Tipo de Item
+                                </button>
+                                <thead>
+                                    <tr>
+                                        <th class="bg-azure">Acciones</th>
+                                        <th class="bg-dark">ID</th>
+                                        <th class="bg-azure">Documento</th>
+                                        <th class="bg-azure">Estado</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for e in form5 %}
+                                    <tr>
+                                        <td>
+                                            <a type="button" class="badge bg-azure"
+                                                onclick="EditaTitem(`{% url 'config:editatitem' e.id %}`)">
+                                                <svg xmlns="http://www.w3.org/2000/svg"
+                                                    class="icon icon-tabler icon-tabler-edit" width="24" height="24"
+                                                    viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+                                                    fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                                    <path
+                                                        d="M7 7h-1a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-1">
+                                                    </path>
+                                                    <path
+                                                        d="M20.385 6.585a2.1 2.1 0 0 0 -2.97 -2.97l-8.415 8.385v3h3l8.385 -8.415z">
+                                                    </path>
+                                                    <path d="M16 5l3 3"></path>
+                                                </svg></a>
+                                            <a type="button" class="badge bg-pink" href="#"
+                                                onclick="eliminaTitem('{{e.id}}', '{{e.descripcion}}')">
+                                                <svg xmlns="http://www.w3.org/2000/svg"
+                                                    class="icon icon-tabler icon-tabler-circle-x" width="24" height="24"
+                                                    viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+                                                    fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                                    <circle cx="12" cy="12" r="9"></circle>
+                                                    <path d="M10 10l4 4m0 -4l-4 4"></path>
+                                                </svg>
+                                            </a>
+                                        </td>
+                                        <td>
+                                            {{e.id}}
+                                        </td>
+                                        <td>
+                                            {{e.descripcion}}
+                                        </td>
+                                        <td class="text-center">
+                                            {% if e.activo is True %}
+                                            <span class="badge badge-sm bg-teal">Activo</span>
+                                            {% else %}
+                                            <span class="badge badge-sm bg-danger">Inactivo</span>
+                                            {% endif %}
+
+                                        </td>
+                                    </tr>
+                                    {%endfor%}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+
+                </div>
+
+
+
+
+
+            </div>
+        </div>
+    </div>
+
+</div>
+<!-- Modal -->
+<div class="modal fade" id="e_config" role="dialog"></div>
+
+<script>
+
+</script>
+<script>
+    function creaCentroCostos() {
+        var url = "{% url 'config:creaCentro'%}"
+        $("#e_config").load(url, function () {
+            $(this).modal("show");
+        });
+    };
+    function EditaCentroCostos(urls) {
+
+        $("#e_config").load(urls, function () {
+            $(this).modal("show");
+        });
+    };
+</script>
+<script>
+    function creaDepartamento() {
+        var url = "{% url 'config:creadpto'%}"
+        $("#e_config").load(url, function () {
+            $(this).modal("show");
+        });
+    };
+    function EditaDepartamento(urls) {
+
+        $("#e_config").load(urls, function () {
+            $(this).modal("show");
+        });
+    };
+</script>
+<script>
+    function creaCia() {
+        var url = "{% url 'config:creacia'%}"
+        $("#e_config").load(url, function () {
+            $(this).modal("show");
+        });
+    };
+    function EditaCia(urls) {
+
+        $("#e_config").load(urls, function () {
+            $(this).modal("show");
+        });
+    };
+
+
+</script>
+<script>
+    function creaDocumento() {
+
+        var url = "{% url 'config:creadcto'%}"
+        $("#e_config").load(url, function () {
+            $(this).modal("show");
+        });
+    };
+    function EditaDocumento(urls) {
+
+        $("#e_config").load(urls, function () {
+            $(this).modal("show");
+        });
+    };
+</script>
+<script>
+    function creaTitem() {
+
+        var url = "{% url 'config:creatitem'%}"
+        $("#e_config").load(url, function () {
+            $(this).modal("show");
+        });
+    };
+    function EditaTitem(urls) {
+
+        $("#e_config").load(urls, function () {
+            $(this).modal("show");
+        });
+    };
+</script>
+{% endblock contenido%}
+{% block script%}
+
+
+{% endblock script%}

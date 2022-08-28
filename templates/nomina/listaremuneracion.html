@@ -1,0 +1,149 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block contenido %}
+
+<div class="card mt-2">
+    <div class="card-header bg-blue shadow">
+        <div class="col-12 text-center text-dark">
+            <h2>LISTA DE ROLES EMPLEADOS</h2>
+
+
+        </div>
+    </div>
+    <div class="card-body">
+        <div class="container p-2">
+            <div class="row">
+                <div class="col">
+                    <form class="form" id="Remu">
+                        {% csrf_token %}
+                        <div class="row " style="float:right">
+                            <div class="col">
+                                <a href="{% url 'empleados:creaRol'%}"
+                                    class=" btn btn-sm btn-blue d-flex justify-content-left "><i
+                                        class="typcn typcn-contacts "></i>
+                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                        class="icon icon-tabler icon-tabler-hand-click" width="24" height="24"
+                                        viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                                        stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                        <path d="M8 13v-8.5a1.5 1.5 0 0 1 3 0v7.5"></path>
+                                        <path d="M11 11.5v-2a1.5 1.5 0 0 1 3 0v2.5"></path>
+                                        <path d="M14 10.5a1.5 1.5 0 0 1 3 0v1.5"></path>
+                                        <path
+                                            d="M17 11.5a1.5 1.5 0 0 1 3 0v4.5a6 6 0 0 1 -6 6h-2h.208a6 6 0 0 1 -5.012 -2.7l-.196 -.3c-.312 -.479 -1.407 -2.388 -3.286 -5.728a1.5 1.5 0 0 1 .536 -2.022a1.867 1.867 0 0 1 2.28 .28l1.47 1.47">
+                                        </path>
+                                        <path d="M5 3l-1 -1"></path>
+                                        <path d="M4 7h-1"></path>
+                                        <path d="M14 3l1 -1"></path>
+                                        <path d="M15 6h1"></path>
+                                    </svg>
+                                    <small class="pl-2 pr-2">Agregar Rol </small>
+                                </a>
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-1">
+                                <label for=""><small>Seleccione Mes:</small> </label>
+
+                                <select class="form-control text-azure" type="text" name="m_e" id="m_e">
+                                    <option value="00"> -- TODO --</option>
+                                    <option value="01"> Enero </option>
+                                    <option value="02"> Febrero </option>
+                                    <option value="03"> Marzo</option>
+                                    <option value="04"> Abril </option>
+                                    <option value="05"> Mayo </option>
+                                    <option value="06"> Junio </option>
+                                    <option value="07"> Julio </option>
+                                    <option value="08"> Agosto </option>
+                                    <option value="09"> Septiembre </option>
+                                    <option value="10"> Octubre </option>
+                                    <option value="11"> Noviembre </option>
+                                    <option value="12"> Diciembre </option>
+
+
+                                </select>
+                            </div>
+
+                            <div class="col-1">
+                                <label for=""><small> Seleccione Año:</small></label>
+                                <select class="form-control text-azure" name="a_e" id="a_e">
+                                    <option value="0000"> -- TODO -- </option>
+                                    <option value="2021"> 2021 </option>
+                                    <option value="2022"> 2022 </option>
+                                    <option value="2023"> 2023</option>
+                                    <option value="2024"> 2024 </option>
+                                    <option value="2025"> 2025 </option>
+                                    <option value="2026"> 2026 </option>
+
+                                </select>
+                            </div>
+                        </div>
+                        <small class="text-pink">Para filtrar la información seleccione mes y año respectivo</small>
+
+                </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="container">
+        <div class="table-responsive p-4 text-center">
+
+            <table class="table table-striped " id="Rem">
+                <thead class="text-center ">
+                    <tr>
+                        <th class="bg-azure">ACCIONES</th>
+                        <th class="bg-dark">ID</th>
+                        <th style="width: 150px;" class="bg-azure">IDENTIFICACION</th>
+                        <th style="width: 300px;" class="bg-azure">NOMBRES Y APELLIDOS</th>
+                        <th class="bg-azure">AÑO</th>
+                        <th class="bg-azure">MES</th>
+                        <th class="bg-azure">SALARIO MENSUAL</th>
+                        <th class="bg-azure">TOTAL INGRESOS</th>
+
+                        <th class="bg-azure">TOTAL EGRESOS</th>
+
+                        <th class="bg-azure">TOTAL OTROS INGRESOS</th>
+                        <th class="bg-azure">TOTAL A PAGAR</th>
+                    </tr>
+                </thead>
+                <tfoot class="justify-content-center">
+                    <tr>
+                        <th class="bg-dark"></th>
+                        <th class="bg-dark"></th>
+                        <th style="width: 150px;" class="bg-dark"></th>
+                        <th style="width: 300px;" class="bg-dark">TOTALES : ...</th>
+                        <th class="bg-dark"></th>
+                        <th class="bg-dark"></th>
+                        <th class="bg-dark"></th>
+                        <th class="bg-dark"></th>
+
+                        <th class="bg-dark"></th>
+
+                        <th class="bg-dark"></th>
+                        <th class="bg-dark"></th>
+                    </tr>
+                </tfoot>
+
+            </table>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{%block script%}
+<script>
+    var valor = "Nomina"
+    genericDatatable(valor)
+</script>
+<script>
+
+</script>
+<script>
+
+</script>
+{% endblock script%}

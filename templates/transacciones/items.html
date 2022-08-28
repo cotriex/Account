@@ -1,0 +1,108 @@
+{%extends 'base.html'%}
+{%load static%}
+{% block contenido%}
+<div class="card mt-2">
+    <div class="card-header bg-blue shadow">
+        <div class="col-12 text-center ">
+            <h2>LISTA ITEMS</h2>
+        </div>
+    </div>
+    <div class="card-body col-12 m-2">
+        <div class="row" style="float: right">
+            <div class="col mb-2">
+                <a href="{% url 'transacciones:creaitem'%}" class="btn btn-sm btn-blue d-flex justify-content-left">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hand-click" width="24"
+                        height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                        <path d="M8 13v-8.5a1.5 1.5 0 0 1 3 0v7.5"></path>
+                        <path d="M11 11.5v-2a1.5 1.5 0 0 1 3 0v2.5"></path>
+                        <path d="M14 10.5a1.5 1.5 0 0 1 3 0v1.5"></path>
+                        <path
+                            d="M17 11.5a1.5 1.5 0 0 1 3 0v4.5a6 6 0 0 1 -6 6h-2h.208a6 6 0 0 1 -5.012 -2.7l-.196 -.3c-.312 -.479 -1.407 -2.388 -3.286 -5.728a1.5 1.5 0 0 1 .536 -2.022a1.867 1.867 0 0 1 2.28 .28l1.47 1.47">
+                        </path>
+                        <path d="M5 3l-1 -1"></path>
+                        <path d="M4 7h-1"></path>
+                        <path d="M14 3l1 -1"></path>
+                        <path d="M15 6h1"></path>
+                    </svg>
+                    <small class="pl-2">Agregar Item</small>
+                </a>
+            </div>
+
+
+        </div>
+
+        <table class="table table-striped table-bordered table-sm " id="Items">
+            <thead class="text-center">
+                <tr class="">
+                    <th class="bg-azure" style="width:5%">ACCIONES</th>
+                    <th class="bg-dark"style="width:10%">CODIGO</th>
+                    <th class="bg-azure"style="width:20%">TIPO ITEM</th>
+                    <th class="bg-azure"style="width:40%">DESCRIPCION</th>
+                    <th class="bg-azure"style="width:20%">IVA</th>
+                    <th class="bg-azure"style="width:5%">ESTADO</th>
+
+                </tr>
+            </thead>
+
+            <tbody class="">
+                {% for m in form%}
+                <tr>
+                    <td class="text-center">
+                        <a type="button" class="badge bg-azure" onclick="editaritem('{{m.codigo}}')">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-edit" width="24"
+                                height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                <path d="M7 7h-1a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-1"></path>
+                                <path d="M20.385 6.585a2.1 2.1 0 0 0 -2.97 -2.97l-8.415 8.385v3h3l8.385 -8.415z"></path>
+                                <path d="M16 5l3 3"></path>
+                            </svg></a>
+                        <a type="button" class="badge bg-pink" href="#"
+                            onclick="eliminaitem('{{m.codigo}}', '{{m.descripcion}}')">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-circle-x"
+                                width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+                                fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                <circle cx="12" cy="12" r="9"></circle>
+                                <path d="M10 10l4 4m0 -4l-4 4"></path>
+                            </svg>
+                        </a>
+                    </td>
+                    <td>{{m.codigo}}</td>
+                    <td>{{m.tipoItem}}</td>
+                    <td>{{m.descripcion}}</td>
+
+                    <td>{{m.IVA}}</td>
+                    <td>
+                        {% if m.activo is True %}
+                        <span class="badge badge-sm bg-teal">Activo</span>
+                        {% else %}
+                        <span class="badge badge-sm bg-danger">Inactivo</span>
+                        {% endif %}
+                    </td>
+
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+</div>
+
+{% endblock contenido%}
+{%block script%}
+<script>
+    $ = jQuery.noConflict()
+    $(document).ready(function () {
+        $('#Items').DataTable({
+            lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "Todo"]],
+
+            language: {
+                url: "/static/assets/static/js/es-ES.json"
+            },
+        });
+    });
+</script>
+{%endblock script%}

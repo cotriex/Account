@@ -1,0 +1,325 @@
+{% extends 'index.html' %}
+{% load crispy_forms_tags %}
+
+
+
+{% block blank %}
+
+<div class="az-content-body col-12 pd-lg-l-40">
+    <div class="">
+        
+        <form id="ano-mes" method="POST" class="col-12">
+            {% csrf_token %}
+            <div class="row">
+            <p class="col-1">Seleccione mes: </p>
+                
+            <select class="col-1 pl-2 form-select" aria-label="" id="mes" name="mes">
+
+                <option value="0">Mes</option>
+                {% for value in mes %}
+                {% if value.mes == "1" %}
+                <option value="{{value.mes}}">ENERO</option>
+                {% endif %}
+                {% if value.mes == "2" %}
+                <option value="{{value.mes}}">FEBRERO</option>
+                {% endif %}
+                {% if value.mes == "3" %}
+                <option value="{{value.mes}}">MARZO</option>
+                {% endif %}
+                {% if value.mes == "4" %}
+                <option value="{{value.mes}}">ABRIL</option>
+                {% endif %}
+                {% if value.mes == "5" %}
+                <option value="{{value.mes}}">MAYO</option>
+                {% endif %}
+                {% if value.mes == "6" %}
+                <option value="{{value.mes}}">JUNIO</option>
+                {% endif %}
+                {% if value.mes == "7" %}
+                <option value="{{value.mes}}">JULIO</option>
+                {% endif %}
+                {% if value.mes == "8" %}
+                <option value="{{value.mes}}">AGOSTO</option>
+                {% endif %}
+                {% if value.mes == "9" %}
+                <option value="{{value.mes}}">SEPTIEMBRE</option>
+                {% endif %}
+                {% if value.mes == "10" %}
+                <option value="{{value.mes}}">OCTUBRE</option>
+                {% endif %}
+                {% if value.mes == "11" %}
+                <option value="{{value.mes}}">NOVIEMBRE</option>
+                {% endif %}
+                {% if value.mes == "12" %}
+                <option value="{{value.mes}}">DICIEMBRE</option>
+                {% endif %}
+                {% endfor %}
+            </select>
+       
+            <p class="ml-1 col-1">Seleccione año: </p>
+            <select class="col-1 form-select" aria-label="" id="ano" name="ano">
+                <option value="0">Año</option>
+                {% for value in ano %}
+                {% if value.ano == "1" %}
+                <option value="{{value.ano}}">2021</option>
+                {% endif %}
+                {% if value.ano == "2" %}
+                <option value="{{value.ano}}">2022</option>
+                {% endif %}
+                {% if value.ano == "3" %}
+                <option value="{{value.ano}}">2023</option>
+                {% endif %}
+                {% if value.ano == "4" %}
+                <option value="{{value.ano}}">2024</option>
+                {% endif %}
+                {% endfor %}
+            </select>
+
+            <button type="submit" class="ml-2 mr-2 mt-2 btn btn-sm badge-warning">Generar</button>
+        </div>
+        <div class="row">
+
+            <p class="col-3 pt-3"><span><b>
+                Procese el rol respectivo luego de la revision: </b></span></p>
+            <a href="" type="submit" class="mr-2 mt-2 btn btn-sm badge-secondary">Procesar Rol</a>
+        </div>
+        </form>
+    </div>
+    <h4 class="d-flex justify-content-center">Rol General</h4>
+<button type="button"  class="btn btn-sm btn-primary justify-content-right" onclick="tableToExcel('rol', 'Rol de Pagos')">Generar Rol Excel</button>
+    <div class="table ">
+        <table class="table-responsive table-sm mg-b-0" id="rol">
+            <thead>
+                <tr>
+                    <th>ACCIONES</th>
+                    <th style="width: 150px;">IDENTIFICACION</th>
+                    <th>AÑO</th>
+                    <th>MES</th>
+                    <th>SALARIO NOMINAL</th>
+                    <th>DIAS</th>
+                    <th>SALARIO MENSUAL</th>
+                    <th>HORAS SUPLEMENTARIAS 25</th>
+                    <th>VALOR25</th>
+                    <th>HORAS SUPLEMENTARIAS 50</th>
+                    <th>VALOR50</th>
+                    <th>HORAS EXTRAS 100</th>
+                    <th>VALOR100</th>
+                    <th>COMISIONES</th>
+                    <th>BONO ADICIONAL</th>
+                    <th>TOTAL INGRESOS</th>
+                    <th>IESS PERSONAL</th>
+                    <th>PRESTAMO IESS</th>
+                    <th>OTROS DESCUENTOS</th>
+                    <th>MULTAS</th>
+                    <th>ANTICIPOS</th>
+                    <th>OTROS PRESTAMOS</th>
+                    <th>TOTAL EGRESOS</th>
+                    <th>TRANSPORTE</th>
+                    <th>MOVILIZACION</th>
+                    <th>PAGO XIII SUELDO</th>
+                    <th>PAGO XIV SUELDO</th>
+                    <th>PAGO FONDO DE RESERVA</th>
+                    <th>TOTAL OTROS INGRESOS</th>
+                    <th>TOTAL A PAGAR</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                {% for m in a%}
+                {% for procesa in procesarol %}
+                {% if m.identificacion == procesa.identificacion and m.mes == procesa.mes and m.ano == procesa.ano %}
+                <tr>
+                    <td class="text-center">
+                        <a type="button" class="badge badge-warning" onclick="editaRol('{{m.id}}')">Editar</a>
+                        <a type="button" class="badge badge-danger" href="#"
+                            onclick="eliminaRol('{{m.id}}', '{{m.identificacion.primerNombre}} {{m.identificacion.segundoNombre}} {{m.identificacion.primerApellido}} {{m.identificacion.segundoApellido}}', '{{m.ano}}', '{{m.mes}}')">Eliminar</a>
+                    </td>
+                    <td>{{m.identificacion.primerNombre}} {{m.identificacion.segundoNombre}}
+                        {{m.identificacion.primerApellido}} {{m.identificacion.segundoApellido}}</td>
+                    <td>{{m.get_ano_display}}</td>
+                    <td>{{m.get_mes_display}}</td>
+                    <td>{{procesa.valorNominal|floatformat:2}}</td>
+                    <td>{{m.dias}}</td>
+                    <td>{{procesa.salarioMensual|floatformat:2}}</td>
+                    <td>{{m.horas25|floatformat:2}}</td>
+                    <td>{{procesa.valor25|floatformat:2}}</td>
+                    <td>{{m.horas50|floatformat:2}}</td>
+                    <td>{{procesa.valor50|floatformat:2}}</td>
+                    <td>{{m.extraHoras100|floatformat:2}}</td>
+                    <td>{{procesa.valor100|floatformat:2}}</td>
+                    <td>{{m.comisiones|floatformat:2}}</td>
+                    <td>{{m.bonoAdicional|floatformat:2}}</td>
+                    <td>{{procesa.ingresosGravados|floatformat:2}}</td>
+                    <td>{{procesa.IESSpersonal|floatformat:2}}</td>
+                    <td>{{m.prestamoIESS|floatformat:2}}</td>
+                    <td>{{m.otrosDescuentos|floatformat:2}}</td>
+                    <td>{{m.multas|floatformat:2}}</td>
+                    <td>{{m.anticipos|floatformat:2}}</td>
+                    <td>{{m.otrosPrestamos|floatformat:2}}</td>
+                    <td>{{procesa.totalEgresos|floatformat:2}}</td>
+                    <td>{{m.transporte|floatformat:2}}</td>
+                    <td>{{m.movilizacion|floatformat:2}}</td>
+                    <td>{{procesa.pagoXIII|floatformat:2}}</td>
+                    <td>{{procesa.pagoXIV|floatformat:2}}</td>
+                    <td>{{procesa.pagoFR|floatformat:2}}</td>
+                    <td>{{procesa.TotalOtrosIngresos|floatformat:2}}</td>
+                    <td>{{procesa.TotalApagar|floatformat:2}}</td>
+                </tr>
+                {% endif %}
+                {% endfor %}
+                {% endfor %}
+            </tbody>
+        </table>
+    </div><!-- table-responsive -->
+    <h4 class="d-flex justify-content-center">Rol de Provisiones</h4>
+    <button type="button"  class="btn btn-sm btn-primary justify-content-right" onclick="tableToExcel('rolprov', 'Rol de Pagos')">Generar Provision Excel</button>
+    
+    <div class="table ">
+        <table class="table-responsive table-sm mg-b-0" id="rolprov">
+            <thead>
+                <tr>
+                    <th>ACCIONES</th>
+                    <th>IDENTIFICACION</th>
+                    <th>AÑO</th>
+                    <th>MES</th>
+                    <th>XIII SUELDO</th>
+                    <th>XIV SUELDO</th>
+                    <th>VACACIONES</th>
+                    <th>FONDO DE RESERVA</th>
+                    <th>IESS PATRONAL</th>
+                    <th>TOTAL IESS A PAGAR</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for m in a%}
+                {% for procesa in procesarol %}
+                {% if m.identificacion == procesa.identificacion and m.mes == procesa.mes and m.ano == procesa.ano %}
+                <tr>
+                    <td class="text-center">
+                        <a type="button" class="badge badge-warning" onclick="editaRol('{{m.id}}')">Editar</a>
+                        <a type="button" class="badge badge-danger" href="#"
+                            onclick="eliminaRol('{{m.id}}', '{{m.identificacion.primerNombre}} {{m.identificacion.segundoNombre}} {{m.identificacion.primerApellido}} {{m.identificacion.segundoApellido}}', '{{m.ano}}', '{{m.mes}}')">Eliminar</a>
+                    </td>
+                    <td>{{m.identificacion.primerNombre}} {{m.identificacion.segundoNombre}}
+                        {{m.identificacion.primerApellido}} {{m.identificacion.segundoApellido}}</td>
+                    <td>{{m.get_ano_display}}</td>
+                    <td>{{m.get_mes_display}}</td>
+                    <td>{{procesa.valorXIII|floatformat:2}}</td>
+                    <td>{{procesa.valorXIV|floatformat:2}}</td>
+                    <td>{{procesa.vacaciones|floatformat:2}}</td>
+                    <td>{{procesa.valorFR|floatformat:2}}</td>
+                    <td>{{procesa.IESSpatr|floatformat:2}}</td>
+                    <td>{{procesa.IESStotal|floatformat:2}}</td>
+                </tr>
+                {% endif %}
+                {% endfor %}
+                {% endfor %}
+            </tbody>
+        </table>
+    </div><!-- table-responsive -->
+
+
+</div>
+
+<script>
+    function procesar() {
+        let tabla = document.getElementById("rol");
+
+        for (let i = 1, celda; i <= tabla.rows.length; i++) {
+            celda = tabla.rows[i].cells[5].innerHTML;
+            valor25 = parseFloat(celda) * 13.25;
+            console.log(valor25);
+        };
+
+
+    }
+    procesar()
+
+</script>
+
+
+
+<script>
+    function getCookie(name) {
+        var cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            var cookies = document.cookie.split(';');
+            for (var i = 0; i < cookies.length; i++) {
+                var cookie = cookies[i].trim();
+                // Does this cookie string begin with the name we want?
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+
+    function GuardarDatos() {
+        var form = new FormData(document.getElementById('ano-mes'));
+        //var lista = document.getElementById('ul-suscriptor');
+        //
+        fetch("/", {
+            method: "POST",
+            body: form,
+            headers: {
+                "X-CSRFToken": getCookie('csrftoken'),
+                "X-Requested-With": "XMLHttpRequest"
+            }
+
+        }).then(
+            function (response) {
+                console.log(response);
+                return response.json()
+            }
+        )//.then(
+        //   function(data) {
+        //       array_sus = data.suscriptores;
+        //       var li = document.createElement('li');
+        //       li.innerHTML = array_sus[array_sus.length - 1].full_name + array_sus[array_sus.length - 1].email 
+        //       //
+        //       lista.appendChild(li);
+    }
+      //  )
+   // }
+</script>
+<script>
+    $ = jQuery.noConflict
+
+    $(function () {
+        $('#rol').bootstrapTable({
+            data: data
+        });
+        console.log(data);
+
+    }
+    );
+
+</script>
+
+<script>
+    $(document).ready(function () {
+        var table = $('#rol').DataTable({
+            scrollY: "160px",
+            scrollX: true,
+            scrollCollapse: true,
+            paging: false,
+            fixedColumns: {
+                leftColumns: 2//Le indico que deje fijas solo las 2 primeras columnas
+            }
+        });
+    });
+</script>
+<script>
+    $(document).ready(function () {
+        $('#rol').DataTable();
+    });
+</script>
+
+
+
+
+
+
+{% endblock %}

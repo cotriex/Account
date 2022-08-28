@@ -1,0 +1,186 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+
+
+{% block contenido %}
+<div class="card mt-2">
+    <div class="card-header bg-azure shadow">
+        <div class="col-12  text-center ">
+            <h2>EDITAR ITEM</h2>
+
+        </div>
+    </div>
+
+    <div class="card-body m-2">
+        <form class="" method="POST" id="F_items">
+            {% csrf_token%}
+            <div class="row col-12">
+                <div class="form-group form-switch col-2 pt-4 mb-0">
+                    {{ form.activo|as_crispy_field }}
+
+                </div>
+                <div class="form-group form-switch col-2 pt-4 mb-0">
+                    {{ form.inventario|as_crispy_field }}
+
+                </div>
+            </div>
+            <div class="row col-12">
+
+
+                <div class="form-group col-2 mb-0">
+                    {{ form.codigo|as_crispy_field }}
+                </div>
+
+                <div class="form-group col-2 mb-0">
+                    {{ form.tipoItem|as_crispy_field }}
+
+                </div>
+
+                <div class="form-group col-4 mb-0">
+                    {{ form.descripcion|as_crispy_field }}
+
+                </div>
+
+                <div class="form-group col-2 mb-0">
+                    {{ form.IVA|as_crispy_field }}
+
+                </div>
+            </div>
+                <div class="row col-12">
+                <div class="form-group col-2 pt-2 mb-0">
+                    {{ form.ctaInventario|as_crispy_field }}
+
+                </div>
+                <div class="form-group col-2 pt-2 mb-0">
+                    {{ form.ctaCostos|as_crispy_field }}
+
+                </div>
+                <div class="form-group col-2 pt-2 mb-0">
+                    {{ form.ctaIngresos|as_crispy_field }}
+
+                </div>
+            </div>
+            <div class="row col-12">
+
+
+                <div class="form-group col-2 pt-2 pb-2 mb-0">
+                    {{ form.ctaGastos|as_crispy_field }}
+
+                </div>
+
+            </div>
+
+
+
+            <div class="card-footer">
+
+
+
+                <div class="d-flex justify-content-end">
+                    <button type="submit" class="mr-4 btn bg-lime d-flex justify-content-end">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-users" width="24"
+                            height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                            <circle cx="9" cy="7" r="4"></circle>
+                            <path d="M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2"></path>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                            <path d="M21 21v-2a4 4 0 0 0 -3 -3.85"></path>
+                        </svg>
+                        Crear</button>
+
+                    <a type="button" href="{%url 'transacciones:items'%}" class="btn bg-danger ml-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-circle-x" width="24"
+                            height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                            <circle cx="12" cy="12" r="9"></circle>
+                            <path d="M10 10l4 4m0 -4l-4 4"></path>
+                        </svg>Cancelar
+                    </a>
+                </div>
+            </div>
+
+        </form>
+    </div>
+
+</div>
+
+{% endblock %}
+{% block script%}
+<script>
+
+    $('#id_inventario').on('change', function () {
+        var checked = $('#id_inventario').is(':checked')
+        if (checked == true) {
+            $('#div_id_ctaGastos').hide();
+            $('#div_id_ctaIngresos').show();
+            $('#div_id_ctaCostos').show();
+            $('#div_id_ctaInventario').show();
+            $('#id_ctaGastos').attr('required', false)
+            $('#id_ctaIngresos').attr('required', true)
+            $('#id_ctaCostos').attr('required', true)
+            $('#id_ctaInventario').attr('required', true)
+            
+        }
+        else {
+            $('#div_id_ctaGastos').show();
+            $('#div_id_ctaIngresos').hide();
+            $('#div_id_ctaCostos').hide();
+            $('#div_id_ctaInventario').hide();
+            $('#id_ctaGastos').attr('required', true)
+            $('#id_ctaIngresos').attr('required', false)
+            $('#id_ctaCostos').attr('required', false)
+            $('#id_ctaInventario').attr('required', false)
+        }
+    });
+
+</script>
+<script>
+  
+</script>
+<script>
+    $(document).ready(function() {
+    $('.select2').select2({
+        theme:"bootstrap4",
+        language: "es"
+    });
+    var checked = $('#id_inventario').is(':checked')
+    console.log(checked)
+        if (checked == true) {
+            $('#div_id_ctaGastos').hide();
+            $('#div_id_ctaIngresos').show();
+            $('#div_id_ctaCostos').show();
+            $('#div_id_ctaInventario').show();
+            $('#id_ctaGastos').attr('required', false)
+            $('#id_ctaIngresos').attr('required', true)
+            $('#id_ctaCostos').attr('required', true)
+            $('#id_ctaInventario').attr('required', true)
+            
+        }
+        else {
+            $('#div_id_ctaGastos').show();
+            $('#div_id_ctaIngresos').hide();
+            $('#div_id_ctaCostos').hide();
+            $('#div_id_ctaInventario').hide();
+            $('#id_ctaGastos').attr('required', true)
+            $('#id_ctaIngresos').attr('required', false)
+            $('#id_ctaCostos').attr('required', false)
+            $('#id_ctaInventario').attr('required', false)
+        }
+   
+});
+
+</script>
+<script>
+    function numero(evt) {
+    evt = (evt) ? evt : window.event;
+    var charCode = (evt.which) ? evt.which : evt.keyCode;
+    if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+        return false;
+    }
+    return true;
+}
+</script>
+{% endblock %}

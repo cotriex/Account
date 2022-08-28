@@ -1,0 +1,560 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+
+{%block title%}
+
+
+
+
+{% endblock title%}
+
+{% block contenido %}
+
+<div class="row col-8 justify-content-center">
+
+<div class="card-body col-8"style="border: solid gray; justify-content: center;">
+    <div class="d-flex align-items-center">
+        <div class="subheader">ROL DE PAGOS</div>
+
+    </div>
+    <div class="card-body pt-5" >
+        <h4>ROL DE PAGOS CORRESPONDIENTE A
+            {% if remuneracion.mes == '01' %}
+            enero
+            {% elif remuneracion.mes == '02' %}
+            febrero
+            {% elif remuneracion.mes == '03' %}
+            marzo
+            {% elif remuneracion.mes == '04' %}
+            abril
+            {% elif remuneracion.mes == '05' %}
+            mayo
+            {% elif remuneracion.mes == '06' %}
+            junio
+            {% elif remuneracion.mes == '07' %}
+            julio
+            {% elif remuneracion.mes == '08' %}
+            agosto
+            {% elif remuneracion.mes == '09' %}
+            septiembre
+            {% elif remuneracion.mes == '10' %}
+            octubre
+            {% elif remuneracion.mes == '11' %}
+            noviembre
+            {% elif remuneracion.mes == '12' %}
+            diciembre
+
+            {% endif %}
+            del AÑO {{object.ano}} </h4>
+ 
+    
+        <div class="row text-center" style="border: solid gray;">
+            <div class="col-3">
+                <label>
+                    <span>
+                        IDENTIFICACION Y NOMBRES DEL EMPLEADO:
+                    </span>
+
+                </label>
+                <br>
+                {{object.identificacion}}
+            </div>
+            <div class="col-3">
+                <label>
+                    <span>
+                        MES Y AÑO:
+                    </span>
+
+                </label>
+                <br>
+                {{object.mes}} - {{object.ano}}
+            </div>
+            <div class="col-3">
+                <label>
+                    <span>
+                        DIAS LABORADOS:
+                    </span>
+
+                </label>
+                <br>
+                <span id="remDias">
+                    {{object.dias}}
+                </span>
+
+            </div>
+            <div class="col-3">
+                <label>
+                    <span>
+                        SALARIO NOMINAL:
+                    </span>
+
+                </label>
+                <br>
+                <span id="remSalarioNominal">
+                    {{object.identificacion.salarioNominal|floatformat:2}}
+                </span>
+
+            </div>
+        </div>
+        <br>
+        <h4 class="text-center">Detalle de Rol</h4>
+        <div class="row text-center" >
+
+            <div class="col-6" >
+                <h3>ingresos</h3>
+                <div class="row p-1">
+                    <div class="col-6 text-center">
+                        <label>
+                            <span>
+                                SALARIO MENSUAL:
+                            </span>
+                    </div>
+                    <div class="col-6 justify-content-right">
+                        <div style="text-align:right">
+                            <span>{{rem.salarioMensual|floatformat:2}}</span>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="row p-1">
+                    <div class=" col-3 text-center">
+                        <label>
+                            <span>
+                                HORAS 25%:
+                            </span>
+                        </label>
+                    </div>
+                    <div class="col-3 text-right">
+                        <span>{{object.horas25|floatformat:2}}</span>
+
+                    </div>
+                    <div class=" col-3 text-center">
+                        <label>
+                            <span>
+                                VALOR 25%:
+                            </span>
+                        </label>
+                    </div>
+                    <div class="col-3 text-right">
+                        <div style="text-align:right">
+                            <span>{{object.valor25|floatformat:2}}</span>
+                        </div>
+
+
+                    </div>
+                </div>
+                <div class="row p-1">
+                    <div class=" col-3 text-center">
+                        <label>
+                            <span>
+                                HORAS 50%:
+                            </span>
+                        </label>
+                    </div>
+                    <div class="col-3 text-right">
+                        <span>{{object.horas50|floatformat:2}}</span>
+
+                    </div>
+                    <div class=" col-3 text-center">
+                        <label>
+                            <span>
+                                VALOR 50%:
+                            </span>
+                        </label>
+                    </div>
+                    <div class="col-3 text-right">
+                        <div style="text-align:right">
+                            <span>{{object.valor50|floatformat:2}}</span>
+                        </div>
+
+
+                    </div>
+                </div>
+
+                <div class="row p-1">
+                    <div class=" col-3 text-center">
+                        <label>
+                            <span>
+                                HORAS 100%:
+                            </span>
+                        </label>
+                    </div>
+                    <div class="col-3 text-right">
+                        <span>{{object.extraHoras100|floatformat:2}}</span>
+
+                    </div>
+                    <div class=" col-3 text-center">
+                        <label>
+                            <span>
+                                VALOR 100%:
+                            </span>
+                        </label>
+                    </div>
+                    <div class="col-3 text-right">
+                        <div style="text-align:right">
+                            <span>{{object.valor100|floatformat:2}}</span>
+                        </div>
+
+
+                    </div>
+                </div>
+
+                <div class="row p-1">
+                    <div class="col-6 text-center">
+                        <label>
+                            <span>
+                                COMISIONES:
+                            </span>
+                    </div>
+                    <div class="col-6 justify-content-right">
+                        <div style="text-align:right">
+                            <span>{{object.comisiones|floatformat:2}}</span>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row p-1">
+                    <div class="col-6 text-center">
+                        <label>
+                            <span>
+                                BONO ADICIONAL:
+                            </span>
+                    </div>
+                    <div class="col-6 justify-content-right">
+                        <div style="text-align:right">
+                            <span>{{object.bonoAdicional|floatformat:2}}</span>
+
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row p-1">
+                    <div class="col-6 text-center">
+                        <label>
+                            <span>
+                               
+                            </span>
+                    </div>
+                    <div class="col-6 justify-content-right">
+                        <div style="text-align:right">
+                            <span></span>
+
+                        </div>
+                    </div>
+                </div>
+
+              
+
+                <div class="row p-1">
+                    <div class="col-6 text-center">
+                        <label>
+                            <span>
+                                
+                            </span>
+                    </div>
+                    <div class="col-6 justify-content-right">
+                        <div style="text-align:right">
+                            <span></span>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="row p-1">
+                    <div class="col-6 text-center">
+                        <label>
+                            <span>
+                                TOTAL INGRESOS:
+                            </span>
+                    </div>
+                    <div class="col-6 justify-content-right">
+                        <div style="text-align:right">
+                            <span>{{rem.totalIngresos|floatformat:2}}</span>
+
+                        </div>
+                    </div>
+                </div>
+
+                </div>
+
+
+
+
+
+
+              
+                <div class="col-6">
+                    <h3>egresos</h3>
+                    <div class="row p-1">
+                        <div class="col-6 text-center">
+                            <label>
+                                <span>
+                                    IESS PERSONAL:
+                                </span>
+                        </div>
+                        <div class="col-6 justify-content-right">
+                            <div style="text-align:right">
+                                <span>{{object.IESSpersonal|floatformat:2}}</span>
+    
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row p-1">
+                        <div class="col-6 text-center">
+                            <label>
+                                <span>
+                                    RETENCION IR:
+                                </span>
+                        </div>
+                        <div class="col-6 justify-content-right">
+                            <div style="text-align:right">
+                                <span>{{object.retencionIR|floatformat:2}}</span>
+    
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row p-1">
+                        <div class="col-6 text-center">
+                            <label>
+                                <span>
+                                    PRESTAMOS IESS:
+                                </span>
+                        </div>
+                        <div class="col-6 justify-content-right">
+                            <div style="text-align:right">
+                                <span>{{object.prestamoIESS|floatformat:2}}</span>
+    
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row p-1">
+                        <div class="col-6 text-center">
+                            <label>
+                                <span>
+                                    EXTENSION CONYUGES:
+                                </span>
+                        </div>
+                        <div class="col-6 justify-content-right">
+                            <div style="text-align:right">
+                                <span>{{object.extConyuges|floatformat:2}}</span>
+    
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row p-1">
+                        <div class="col-6 text-center">
+                            <label>
+                                <span>
+                                    OTROS DESCUENTOS:
+                                </span>
+                        </div>
+                        <div class="col-6 justify-content-right">
+                            <div style="text-align:right">
+                                <span>{{object.otrosDescuentos|floatformat:2}}</span>
+    
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row p-1">
+                        <div class="col-6 text-center">
+                            <label>
+                                <span>
+                                    MULTAS:
+                                </span>
+                        </div>
+                        <div class="col-6 justify-content-right">
+                            <div style="text-align:right">
+                                <span>{{object.multas|floatformat:2}}</span>
+    
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row p-1">
+                        <div class="col-6 text-center">
+                            <label>
+                                <span>
+                                    ANTICIPOS:
+                                </span>
+                        </div>
+                        <div class="col-6 justify-content-right">
+                            <div style="text-align:right">
+                                <span>{{object.anticipos|floatformat:2}}</span>
+    
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row p-1">
+                        <div class="col-6 text-center">
+                            <label>
+                                <span>
+                                    OTROS PRESTAMOS:
+                                </span>
+                        </div>
+                        <div class="col-6 justify-content-right">
+                            <div style="text-align:right">
+                                <span>{{object.otrosPrestamos|floatformat:2}}</span>
+    
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row p-1">
+                        <div class="col-6 text-center">
+                            <label>
+                                <span>
+                                    TOTAL EGRESOS:
+                                </span>
+                        </div>
+                        <div class="col-6 justify-content-right">
+                            <div style="text-align:right">
+                                <span>{{rem.totalEgresos|floatformat:2}}</span>
+    
+                            </div>
+                        </div>
+                    </div>
+    
+
+              
+                    <h3>otros Ingresos</h3>
+                    <div class="row p-1">
+                        <div class="col-6 text-center">
+                            <label>
+                                <span>
+                                    MOVILIZACION:
+                                </span>
+                        </div>
+                        <div class="col-6 justify-content-right">
+                            <div style="text-align:right">
+                                <span>{{object.movilizacion|floatformat:2}}</span>
+    
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row p-1">
+                        <div class="col-6 text-center">
+                            <label>
+                                <span>
+                                    TRANSPORTE:
+                                </span>
+                        </div>
+                        <div class="col-6 justify-content-right">
+                            <div style="text-align:right">
+                                <span>{{object.transporte|floatformat:2}}</span>
+    
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row p-1">
+                        <div class="col-6 text-center">
+                            <label>
+                                <span>
+                                    PAGO XIII SUELDO:
+                                </span>
+                        </div>
+                        <div class="col-6 justify-content-right">
+                            <div style="text-align:right">
+                                <span>{{object.pagoXIII|floatformat:2}}</span>
+    
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row p-1">
+                        <div class="col-6 text-center">
+                            <label>
+                                <span>
+                                    PAGO XIV SUELDO:
+                                </span>
+                        </div>
+                        <div class="col-6 justify-content-right">
+                            <div style="text-align:right">
+                                <span>{{object.pagoXIV|floatformat:2}}</span>
+    
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row p-1">
+                        <div class="col-6 text-center">
+                            <label>
+                                <span>
+                                    PAGO FONDO RESERVA:
+                                </span>
+                        </div>
+                        <div class="col-6 justify-content-right">
+                            <div style="text-align:right">
+                                <span>{{object.pagoFR|floatformat:2}}</span>
+    
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row p-1">
+                        <div class="col-6 text-center">
+                            <label>
+                                <span>
+                                    PAGO VACACIONES:
+                                </span>
+                        </div>
+                        <div class="col-6 justify-content-right">
+                            <div style="text-align:right">
+                                <span>{{object.pagoVacaciones|floatformat:2}}</span>
+    
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row p-1">
+                        <div class="col-6 text-center">
+                            <label>
+                                <span>
+                                    TOTAL OTROS INGRESOS:
+                                </span>
+                        </div>
+                        <div class="col-6 justify-content-right">
+                            <div style="text-align:right">
+                                <span>{{rem.totalOtrosIngresos|floatformat:2}}</span>
+    
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row p-1">
+                        <div class="col-6 text-center">
+                            <label>
+                                <span>
+                                    
+                                </span>
+                        </div>
+                        <div class="col-6 justify-content-right">
+                            <div style="text-align:right">
+                                <span></span>
+    
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row p-1">
+                        <div class="col-6 text-center">
+                            <label>
+                                <span>
+                                    TOTAL A RECIBIR:
+                                </span>
+                        </div>
+                        <div class="col-6 justify-content-right">
+                            <div style="text-align:right">
+                                <span>{{rem.totalPagar|floatformat:2}}</span>
+    
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+        </div>
+    </div>
+
+ 
+</div>
+
+
+
+    {% endblock %}

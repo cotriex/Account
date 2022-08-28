@@ -1,0 +1,201 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+
+
+{% block contenido %}
+<div class="card mt-2">
+    <div class="card-header bg-azure shadow">
+        <div class="col-12  text-center ">
+            <h2>EDITAR CUENTA CONTABLE</h2>
+
+        </div>
+    </div>
+
+    <div class="card-body m-2">
+        <form class="" method="POST" id="F_planCuentas">
+            {% csrf_token%}
+            <div class="row col-12">
+
+                <div class="form-group col-1 mb-0">
+                    {{ form.cuenta|as_crispy_field }}
+                </div>
+
+                <div class="form-group col-3 mb-0">
+                    {{ form.descripcion|as_crispy_field }}
+
+                </div>
+                <div class="form-group col-1 mb-0">
+
+                    {{ form.signo|as_crispy_field }}
+
+                </div>
+                <div class="form-group col-2 mb-0">
+                    {{ form.tipoCuenta|as_crispy_field }}
+
+                </div>
+                <div class="form-group col-1 mb-0">
+                    {{ form.nivel|as_crispy_field }}
+
+                </div>
+
+                <div class="form-group col-2  mb-0">
+                    {{ form.tipoEstado|as_crispy_field }}
+
+                </div>
+
+                <div class="form-group col-1  mb-0">
+                    {{ form.ctaAcumulacion|as_crispy_field }}
+
+                </div>
+
+                <div class="form-group form-switch col-1 pt-4 mb-0">
+                    {{ form.activo|as_crispy_field }}
+
+                </div>
+
+
+                <div class="card-footer">
+
+
+
+                    <div class="d-flex justify-content-end">
+                        <button type="submit" class="mr-4 btn bg-lime d-flex justify-content-end">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-users"
+                                width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+                                fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                <circle cx="9" cy="7" r="4"></circle>
+                                <path d="M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2"></path>
+                                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                                <path d="M21 21v-2a4 4 0 0 0 -3 -3.85"></path>
+                            </svg>
+                            Editar</button>
+
+                        <a type="button" accesskey="z" href="{%url 'transacciones:planCuentas'%}" class="btn bg-danger ml-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-circle-x"
+                                width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+                                fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                <circle cx="12" cy="12" r="9"></circle>
+                                <path d="M10 10l4 4m0 -4l-4 4"></path>
+                            </svg>Cancelar
+                        </a>
+                    </div>
+                </div>
+
+        </form>
+    </div>
+
+</div>
+
+{% endblock %}
+{% block script%}
+<script>
+    $("#id_cuenta").change(function () {
+
+        var cuenta = $("#id_cuenta").val();
+        countcta = cuenta.length
+        console.log(countcta)
+
+        switch (countcta) {
+            case 1:
+                $("#id_nivel option[value='']").attr("selected", false);
+                $("#id_nivel option[value=1]").attr("selected", true);
+                $("#id_ctaAcumulacion").val("");
+                alert("Cuenta Principal");
+                break;
+            case 3:
+            $("#id_nivel option[value='']").attr("selected", false);
+                $("#id_nivel option[value=2]").attr("selected", true);
+                $("#id_ctaAcumulacion").val("");
+                var valor = cuenta.substr(0, 1);
+                var data = { id: valor }
+                plan(data)
+                break;
+            case 5:
+            $("#id_nivel option[value='']").attr("selected", false);
+                $("#id_nivel option[value=3]").attr("selected", true);
+                $("#id_ctaAcumulacion").val("");
+                var valor = cuenta.substr(0, 3);
+                var data = { id: valor }
+                plan(data)
+                break;
+            case 7:
+            $("#id_nivel option[value='']").attr("selected", false);
+                $("#id_nivel option[value=4]").attr("selected", true);
+                $("#id_ctaAcumulacion").val("");
+                var valor = cuenta.substr(0, 5);
+                var data = { id: valor }
+                plan(data)
+                break;
+            case 9:
+            $("#id_nivel option[value='']").attr("selected", false);
+                $("#id_nivel option[value=5]").attr("selected", true);
+                $("#id_ctaAcumulacion").val("");
+                var valor = cuenta.substr(0, 7);
+                var data = { id: valor }
+                plan(data)
+                break;
+            case 12:
+            $("#id_nivel option[value='']").attr("selected", false);
+                $("#id_nivel option[value=6]").attr("selected", true);
+                $("#id_ctaAcumulacion").val("");
+                var valor = cuenta.substr(0, 7);
+                var data = { id: valor }
+                plan(data)
+                break;
+            case 2:
+                alert("No existe nivel para esta cuenta")
+                break;
+            case 4:
+                alert("No existe nivel para esta cuenta")
+                break;
+            case 6:
+                alert("No existe nivel para esta cuenta")
+                break;
+            case 8:
+                alert("No existe nivel para esta cuenta")
+                break;
+            case 10:
+                alert("No existe nivel para esta cuenta")
+                break;
+            case 11:
+                alert("No existe nivel para esta cuenta")
+                break;
+        }
+    })
+</script>
+<script>
+    $("#id_signo").change(function () {
+        var seleccion = $(this).children("option:selected").val();
+        switch (seleccion) {
+            case "P":
+                $("#id_signo").removeClass("text-red")
+                $("#id_signo").addClass("text-blue");
+                break;
+            case "N":
+                $("#id_signo").removeClass("text-blue")
+                $("#id_signo").addClass("text-red")
+                break;
+            case "":
+                $("#id_signo").removeClass("text-blue")
+                $("#id_signo").removeClass("text-red")
+                $("#id_signo").addClass("text-black")
+                break;
+        }
+    });
+</script>
+<script>
+    $(document).ready(function () {
+        var seleccion = $("#id_signo").children("option:selected").val();
+        console.log(seleccion)
+        if (seleccion == "P") {
+            $("#id_signo").addClass("text-blue")
+        }
+        else {
+            $("#id_signo").addClass("text-red")
+        }
+    })
+</script>
+{% endblock %}

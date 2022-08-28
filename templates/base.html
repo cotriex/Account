@@ -1,0 +1,791 @@
+{% load static %}
+<!doctype html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Cotriex Soft.</title>
+    <!-- CSS files -->
+    <link href="{% static 'assets/static/css/tabler.min.css'%}" rel="stylesheet" />
+    <link href="{% static 'assets/static/css/tabler-flags.min.css'%}" rel="stylesheet" />
+    <link href="{% static 'assets/static/css/tabler-payments.min.css'%}" rel="stylesheet" />
+    <link href="{% static 'assets/static/css/tabler-vendors.min.css'%}" rel="stylesheet" />
+
+    <link href="{% static 'assets/static/css/demo.min.css'%}" rel="stylesheet" />
+    <link href="{% static 'assets/static/select2/css/select2.min.css'%}" rel="stylesheet" />
+
+    <link href="{% static 'assets/static/select2/css/select2-bootstrap4.min.css'%}" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/static/css/jquery.dataTables.css'%}">
+</head>
+
+<body>
+    <div class="page">
+        <header class="navbar shadow fixed-top  navbar-expand-md navbar-light bg-light d-print-none">
+            <div class="container-xl ">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-menu">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Aquí va el logo -->
+
+                <h1 class="navbar-brand navbar-brand-autodark bg-light d-none-navbar-horizontal pe-0 pe-md-3">
+                    <a href="{%url 'home'%}">
+                        <img src="{%static 'assets/static/images/banner2.jpg'%}" width="110" height="32" alt="Cotriex"
+                            class="navbar-brand-image">
+                    </a>
+                </h1>
+                <div class="navbar-nav flex-row order-md-last">
+                    <div class="d-none d-md-flex">
+
+                        <div class="nav-item dropdown d-none d-md-flex me-3">
+
+                            <div class="dropdown-menu dropdown-menu-arrow dropdown-menu-end dropdown-menu-card">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h3 class="card-title">Last updates</h3>
+                                    </div>
+                                    <div class="list-group list-group-flush list-group-hoverable">
+                                        <div class="list-group-item">
+                                            <div class="row align-items-center">
+                                                <div class="col-auto"><span
+                                                        class="status-dot status-dot-animated bg-red d-block"></span>
+                                                </div>
+                                                <div class="col text-truncate">
+                                                    <a href="#" class="text-body d-block">Example 1</a>
+                                                    <div class="d-block text-muted text-truncate mt-n1">
+                                                        Change deprecated html tags to text decoration classes (#29604)
+                                                    </div>
+                                                </div>
+                                                <div class="col-auto">
+                                                    <a href="#" class="list-group-item-actions">
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="list-group-item">
+                                            <div class="row align-items-center">
+                                                <div class="col-auto"><span class="status-dot d-block"></span></div>
+                                                <div class="col text-truncate">
+                                                    <a href="#" class="text-body d-block">Example 2</a>
+                                                    <div class="d-block text-muted text-truncate mt-n1">
+                                                        justify-content:between ⇒ justify-content:space-between (#29734)
+                                                    </div>
+                                                </div>
+                                                <div class="col-auto">
+                                                    <a href="#" class="list-group-item-actions show">
+                                                        <!-- Download SVG icon from http://tabler-icons.io/i/star -->
+                                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon text-yellow"
+                                                            width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
+                                                            stroke="currentColor" fill="none" stroke-linecap="round"
+                                                            stroke-linejoin="round">
+                                                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                                            <path
+                                                                d="M12 17.75l-6.172 3.245l1.179 -6.873l-5 -4.867l6.9 -1l3.086 -6.253l3.086 6.253l6.9 1l-5 4.867l1.179 6.873z">
+                                                            </path>
+                                                        </svg>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="list-group-item">
+                                            <div class="row align-items-center">
+                                                <div class="col-auto"><span class="status-dot d-block"></span></div>
+                                                <div class="col text-truncate">
+                                                    <a href="#" class="text-body d-block">Example 3</a>
+                                                    <div class="d-block text-muted text-truncate mt-n1">
+                                                        Update change-version.js (#29736)
+                                                    </div>
+                                                </div>
+                                                <div class="col-auto">
+                                                    <a href="#" class="list-group-item-actions">
+                                                        <!-- Download SVG icon from http://tabler-icons.io/i/star -->
+                                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon text-muted"
+                                                            width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
+                                                            stroke="currentColor" fill="none" stroke-linecap="round"
+                                                            stroke-linejoin="round">
+                                                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                                            <path
+                                                                d="M12 17.75l-6.172 3.245l1.179 -6.873l-5 -4.867l6.9 -1l3.086 -6.253l3.086 6.253l6.9 1l-5 4.867l1.179 6.873z">
+                                                            </path>
+                                                        </svg>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="list-group-item">
+                                            <div class="row align-items-center">
+                                                <div class="col-auto"><span
+                                                        class="status-dot status-dot-animated bg-green d-block"></span>
+                                                </div>
+                                                <div class="col text-truncate">
+                                                    <a href="#" class="text-body d-block">Example 4</a>
+                                                    <div class="d-block text-muted text-truncate mt-n1">
+                                                        Regenerate package-lock.json (#29730)
+                                                    </div>
+                                                </div>
+                                                <div class="col-auto">
+                                                    <a href="#" class="list-group-item-actions">
+                                                        <!-- Download SVG icon from http://tabler-icons.io/i/star -->
+                                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon text-muted"
+                                                            width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
+                                                            stroke="currentColor" fill="none" stroke-linecap="round"
+                                                            stroke-linejoin="round">
+                                                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                                            <path
+                                                                d="M12 17.75l-6.172 3.245l1.179 -6.873l-5 -4.867l6.9 -1l3.086 -6.253l3.086 6.253l6.9 1l-5 4.867l1.179 6.873z">
+                                                            </path>
+                                                        </svg>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link d-flex lh-1 text-reset p-0" data-bs-toggle="dropdown"
+                            aria-label="Open user menu">
+
+                            <div class="d-none d-xl-block ps-2">
+                                <div class="p-2 text-tabler">Bienvenido, {{user.first_name}} {{user.last_name}} </div>
+
+                            </div>
+
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+
+                            <a href="{% url 'usuarios:logout' %}" class="dropdown-item">Cerrar Sesión</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Aquí termina el logo -->
+
+
+                <!-- Aquí el usuario activo -->
+
+                <div class="navbar-nav flex-row order-md-last">
+                    <div class="d-none d-md-flex">
+                        <a href="?theme=light" class="nav-link px-0 hide-theme-light" title="Enable light mode"
+                            data-bs-toggle="tooltip" data-bs-placement="bottom">
+
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24"
+                                viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                <circle cx="12" cy="12" r="4" />
+                                <path
+                                    d="M3 12h1m8 -9v1m8 8h1m-9 8v1m-6.4 -15.4l.7 .7m12.1 -.7l-.7 .7m0 11.4l.7 .7m-12.1 -.7l-.7 .7" />
+                            </svg>
+                        </a>
+                    </div>
+                    <div class="nav-item dropdown">
+
+                    </div>
+                </div>
+
+                <!-- Aquí termina el usuario activo -->
+
+                <div class="collapse navbar-collapse" id="navbar-menu">
+                    <div class="d-flex flex-column flex-md-row flex-fill align-items-stretch align-items-md-center">
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link " href="{% url 'home'%}">
+                                    <span class="nav-link-icon d-md-none d-lg-inline-block">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon text-black" width="24"
+                                            height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+                                            fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                            <polyline points="5 12 3 12 12 3 21 12 19 12" />
+                                            <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+                                            <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+                                        </svg>
+                                    </span>
+                                    <span class="nav-link-title text-red">
+                                        Inicio
+                                    </span>
+                                </a>
+                            </li>
+
+                            <!-- Detalle del menú generado -->
+
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#navbar-base" data-bs-toggle="dropdown"
+                                    data-bs-auto-close="outside" role="button" aria-expanded="false">
+                                    <span class="nav-link-icon d-md-none d-lg-inline-block">
+                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                            class=" text-black icon icon-tabler icon-tabler-adjustments" width="24"
+                                            height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+                                            fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                            <circle cx="6" cy="10" r="2"></circle>
+                                            <line x1="6" y1="4" x2="6" y2="8"></line>
+                                            <line x1="6" y1="12" x2="6" y2="20"></line>
+                                            <circle cx="12" cy="16" r="2"></circle>
+                                            <line x1="12" y1="4" x2="12" y2="14"></line>
+                                            <line x1="12" y1="18" x2="12" y2="20"></line>
+                                            <circle cx="18" cy="7" r="2"></circle>
+                                            <line x1="18" y1="4" x2="18" y2="5"></line>
+                                            <line x1="18" y1="9" x2="18" y2="20"></line>
+                                        </svg>
+                                    </span>
+                                    <span class="nav-link-title text-red ">
+                                        Configuración
+                                    </span>
+                                </a>
+                                <div class="dropdown-menu">
+
+                                    <a class="dropdown-item text-blue" href="{% url 'config:config' %}">
+                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                            class="icon icon-tabler icon-tabler-building" width="24" height="24"
+                                            viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                                            stroke-linecap="round" stroke-linejoin="round">
+                                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                            <line x1="3" y1="21" x2="21" y2="21"></line>
+                                            <line x1="9" y1="8" x2="10" y2="8"></line>
+                                            <line x1="9" y1="12" x2="10" y2="12"></line>
+                                            <line x1="9" y1="16" x2="10" y2="16"></line>
+                                            <line x1="14" y1="8" x2="15" y2="8"></line>
+                                            <line x1="14" y1="12" x2="15" y2="12"></line>
+                                            <line x1="14" y1="16" x2="15" y2="16"></line>
+                                            <path d="M5 21v-16a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2v16"></path>
+                                        </svg>
+                                        <span class="p-2"> Basica </span>
+
+                                    </a>
+                                    <div class="dropend">
+                                        <a class="dropdown-item dropdown-toggle text-blue" href="#sidebar-cards"
+                                            data-bs-toggle="dropdown" data-bs-auto-close="outside" role="button"
+                                            aria-expanded="false">
+                                            <svg xmlns="http://www.w3.org/2000/svg"
+                                                class="icon icon-tabler icon-tabler-sitemap" width="24" height="24"
+                                                viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                                                stroke-linecap="round" stroke-linejoin="round">
+                                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                                <rect x="3" y="15" width="6" height="6" rx="2"></rect>
+                                                <rect x="15" y="15" width="6" height="6" rx="2"></rect>
+                                                <rect x="9" y="3" width="6" height="6" rx="2"></rect>
+                                                <path d="M6 15v-1a2 2 0 0 1 2 -2h8a2 2 0 0 1 2 2v1"></path>
+                                                <line x1="12" y1="9" x2="12" y2="12"></line>
+                                            </svg>
+                                            <span class="p-2"> Entidades </span>
+
+                                        </a>
+                                        <div class="dropdown-menu">
+                                            <a href="./cards.html" class="dropdown-item text-azure">
+                                                <svg xmlns="http://www.w3.org/2000/svg"
+                                                    class="icon icon-tabler icon-tabler-address-book" width="24"
+                                                    height="24" viewBox="0 0 24 24" stroke-width="2"
+                                                    stroke="currentColor" fill="none" stroke-linecap="round"
+                                                    stroke-linejoin="round">
+                                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                                    <path
+                                                        d="M20 6v12a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2z">
+                                                    </path>
+                                                    <path d="M10 16h6"></path>
+                                                    <circle cx="13" cy="11" r="2"></circle>
+                                                    <path d="M4 8h3"></path>
+                                                    <path d="M4 12h3"></path>
+                                                    <path d="M4 16h3"></path>
+                                                </svg>
+                                                <span class="p-2"> Clientes </span>
+                                            </a>
+                                            <a href="./card-actions.html" class="dropdown-item text-azure">
+                                                <svg xmlns="http://www.w3.org/2000/svg"
+                                                    class="icon icon-tabler icon-tabler-apps" width="24" height="24"
+                                                    viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+                                                    fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                                    <rect x="4" y="4" width="6" height="6" rx="1"></rect>
+                                                    <rect x="4" y="14" width="6" height="6" rx="1"></rect>
+                                                    <rect x="14" y="14" width="6" height="6" rx="1"></rect>
+                                                    <line x1="14" y1="7" x2="20" y2="7"></line>
+                                                    <line x1="17" y1="4" x2="17" y2="10"></line>
+                                                </svg>
+                                                <span class="p-2"> Proveedores </span>
+                                                <span class="badge badge-sm bg-green text-uppercase ms-2">New</span>
+                                            </a>
+                                            <a href="{% url 'empleados:listaEmpleado' %}"
+                                                class="dropdown-item text-azure">
+                                                <svg xmlns="http://www.w3.org/2000/svg"
+                                                    class="icon icon-tabler icon-tabler-users" width="24" height="24"
+                                                    viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+                                                    fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                                    <circle cx="9" cy="7" r="4"></circle>
+                                                    <path d="M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2"></path>
+                                                    <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                                                    <path d="M21 21v-2a4 4 0 0 0 -3 -3.85"></path>
+                                                </svg>
+                                                <span class="p-2"> Empleados </span>
+                                            </a>
+                                            <a href="./cards-masonry.html" class="dropdown-item">
+                                                <i class="ti ti-user-plus"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="dropend">
+                                        <a class="dropdown-item dropdown-toggle text-blue" href="#sidebar-cards"
+                                            data-bs-toggle="dropdown" data-bs-auto-close="outside" role="button"
+                                            aria-expanded="false">
+                                            <svg xmlns="http://www.w3.org/2000/svg"
+                                                class="icon icon-tabler icon-tabler-settings-automation" width="24"
+                                                height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+                                                fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                                <path
+                                                    d="M10.325 4.317c.426 -1.756 2.924 -1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543 -.94 3.31 .826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.756 .426 1.756 2.924 0 3.35a1.724 1.724 0 0 0 -1.066 2.573c.94 1.543 -.826 3.31 -2.37 2.37a1.724 1.724 0 0 0 -2.572 1.065c-.426 1.756 -2.924 1.756 -3.35 0a1.724 1.724 0 0 0 -2.573 -1.066c-1.543 .94 -3.31 -.826 -2.37 -2.37a1.724 1.724 0 0 0 -1.065 -2.572c-1.756 -.426 -1.756 -2.924 0 -3.35a1.724 1.724 0 0 0 1.066 -2.573c-.94 -1.543 .826 -3.31 2.37 -2.37c1 .608 2.296 .07 2.572 -1.065z">
+                                                </path>
+                                                <path d="M10 9v6l5 -3z"></path>
+                                            </svg>
+                                            <span class="p-2"> Otros </span>
+
+                                        </a>
+                                        <div class="dropdown-menu">
+                                            <a class="dropdown-item text-blue" href="{% url 'transacciones:items' %}">
+                                                <svg xmlns="http://www.w3.org/2000/svg"
+                                                    class="icon icon-tabler icon-tabler-clipboard-list" width="24"
+                                                    height="24" viewBox="0 0 24 24" stroke-width="2"
+                                                    stroke="currentColor" fill="none" stroke-linecap="round"
+                                                    stroke-linejoin="round">
+                                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                                    <path
+                                                        d="M9 5h-2a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-12a2 2 0 0 0 -2 -2h-2">
+                                                    </path>
+                                                    <rect x="9" y="3" width="6" height="4" rx="2"></rect>
+                                                    <line x1="9" y1="12" x2="9.01" y2="12"></line>
+                                                    <line x1="13" y1="12" x2="15" y2="12"></line>
+                                                    <line x1="9" y1="16" x2="9.01" y2="16"></line>
+                                                    <line x1="13" y1="16" x2="15" y2="16"></line>
+                                                </svg>
+                                                <span class="p-2"> Items </span>
+                                            </a>
+                                            <a class="dropdown-item text-blue"
+                                                href="{% url 'transacciones:planCuentas' %}">
+                                                <svg xmlns="http://www.w3.org/2000/svg"
+                                                    class="icon icon-tabler icon-tabler-file-invoice" width="24"
+                                                    height="24" viewBox="0 0 24 24" stroke-width="2"
+                                                    stroke="currentColor" fill="none" stroke-linecap="round"
+                                                    stroke-linejoin="round">
+                                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                                    <path d="M14 3v4a1 1 0 0 0 1 1h4"></path>
+                                                    <path
+                                                        d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z">
+                                                    </path>
+                                                    <line x1="9" y1="7" x2="10" y2="7"></line>
+                                                    <line x1="9" y1="13" x2="15" y2="13"></line>
+                                                    <line x1="13" y1="17" x2="15" y2="17"></line>
+                                                </svg>
+                                                <span class="p-2"> Plan de Cuentas </span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+
+                            <li class="nav-item dropdown">
+                                <a class="nav-link text-red dropdown-toggle" href="#navbar-extra"
+                                    data-bs-toggle="dropdown" data-bs-auto-close="outside" role="button"
+                                    aria-expanded="false">
+                                    <span class="nav-link-icon d-md-none d-lg-inline-block">
+                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                            class="icon text-dark icon-tabler icon-tabler-wallet" width="24" height="24"
+                                            viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                                            stroke-linecap="round" stroke-linejoin="round">
+                                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                            <path
+                                                d="M17 8v-3a1 1 0 0 0 -1 -1h-10a2 2 0 0 0 0 4h12a1 1 0 0 1 1 1v3m0 4v3a1 1 0 0 1 -1 1h-12a2 2 0 0 1 -2 -2v-12">
+                                            </path>
+                                            <path d="M20 12v4h-4a2 2 0 0 1 0 -4h4"></path>
+                                        </svg>
+                                    </span>
+                                    <span class="nav-link-title">
+                                        Nómina
+                                    </span>
+                                </a>
+                                <div class="dropdown-menu">
+                                    <div class="dropdown-menu-columns">
+                                        <div class="dropend">
+                                            <a class="dropdown-item dropdown-toggle text-blue" href="#sidebar-cards"
+                                                data-bs-toggle="dropdown" data-bs-auto-close="outside" role="button"
+                                                aria-expanded="false">
+                                                <svg xmlns="http://www.w3.org/2000/svg"
+                                                    class="icon icon-tabler icon-tabler-cash" width="24" height="24"
+                                                    viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+                                                    fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                                    <rect x="7" y="9" width="14" height="10" rx="2"></rect>
+                                                    <circle cx="14" cy="14" r="2"></circle>
+                                                    <path
+                                                        d="M17 9v-2a2 2 0 0 0 -2 -2h-10a2 2 0 0 0 -2 2v6a2 2 0 0 0 2 2h2">
+                                                    </path>
+                                                </svg>
+                                                <span class="p-2"> Roles </span>
+                                            </a>
+                                            <div class="dropdown-menu">
+                                                <a href="{% url 'empleados:creaRol' %}"
+                                                    class="dropdown-item text-azure">
+                                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                                        class="icon icon-tabler icon-tabler-column-insert-left"
+                                                        width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
+                                                        stroke="currentColor" fill="none" stroke-linecap="round"
+                                                        stroke-linejoin="round">
+                                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                                        <path
+                                                            d="M14 4h4a1 1 0 0 1 1 1v14a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1v-14a1 1 0 0 1 1 -1z">
+                                                        </path>
+                                                        <line x1="5" y1="12" x2="9" y2="12"></line>
+                                                        <line x1="7" y1="10" x2="7" y2="14"></line>
+                                                    </svg>
+                                                    <span class="p-2"> Nuevo Rol </span>
+                                                </a>
+                                                <a href="{% url 'empleados:listaNomina' %}"
+                                                    class="dropdown-item text-azure">
+                                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                                        class="icon icon-tabler icon-tabler-list" width="24" height="24"
+                                                        viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+                                                        fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                                        <line x1="9" y1="6" x2="20" y2="6"></line>
+                                                        <line x1="9" y1="12" x2="20" y2="12"></line>
+                                                        <line x1="9" y1="18" x2="20" y2="18"></line>
+                                                        <line x1="5" y1="6" x2="5" y2="6.01"></line>
+                                                        <line x1="5" y1="12" x2="5" y2="12.01"></line>
+                                                        <line x1="5" y1="18" x2="5" y2="18.01"></line>
+                                                    </svg>
+                                                    <span class="p-2"> Listar Roles </span>
+                                                </a>
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="dropdown-menu-columns">
+                                        <div class="dropend">
+                                            <a class="dropdown-item dropdown-toggle text-blue" href="#sidebar-cards"
+                                                data-bs-toggle="dropdown" data-bs-auto-close="outside" role="button"
+                                                aria-expanded="false">
+                                                <svg xmlns="http://www.w3.org/2000/svg"
+                                                    class="icon icon-tabler icon-tabler-cash" width="24" height="24"
+                                                    viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+                                                    fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                                    <rect x="7" y="9" width="14" height="10" rx="2"></rect>
+                                                    <circle cx="14" cy="14" r="2"></circle>
+                                                    <path
+                                                        d="M17 9v-2a2 2 0 0 0 -2 -2h-10a2 2 0 0 0 -2 2v6a2 2 0 0 0 2 2h2">
+                                                    </path>
+                                                </svg>
+                                                <span class="p-2"> Provisiones</span>
+                                            </a>
+                                            <div class="dropdown-menu">
+                                                <a href="{% url 'empleados:listarProvisiones' %}"
+                                                    class="dropdown-item text-azure">
+                                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                                        class="icon icon-tabler icon-tabler-list" width="24" height="24"
+                                                        viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+                                                        fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                                        <line x1="9" y1="6" x2="20" y2="6"></line>
+                                                        <line x1="9" y1="12" x2="20" y2="12"></line>
+                                                        <line x1="9" y1="18" x2="20" y2="18"></line>
+                                                        <line x1="5" y1="6" x2="5" y2="6.01"></line>
+                                                        <line x1="5" y1="12" x2="5" y2="12.01"></line>
+                                                        <line x1="5" y1="18" x2="5" y2="18.01"></line>
+                                                    </svg>
+                                                    <span class="p-2"> Listar Provisiones </span>
+                                                </a>
+                                                <a href="{% url 'empleados:listarAportes' %}"
+                                                    class="dropdown-item text-azure">
+                                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                                        class="icon icon-tabler icon-tabler-device-heart-monitor"
+                                                        width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
+                                                        stroke="currentColor" fill="none" stroke-linecap="round"
+                                                        stroke-linejoin="round">
+                                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                                        <rect x="4" y="4" width="16" height="16" rx="2"></rect>
+                                                        <path d="M4 9h6l1 -2l2 4l1 -2h6"></path>
+                                                        <path d="M4 14h16"></path>
+                                                        <path d="M14 17v.01"></path>
+                                                        <path d="M17 17v.01"></path>
+                                                    </svg>
+                                                    <span class="p-2"> Aportes </span>
+                                                </a>
+                                                <a href="{% url 'empleados:IESS' %}" class="dropdown-item text-azure">
+                                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                                        class="icon icon-tabler icon-tabler-device-heart-monitor"
+                                                        width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
+                                                        stroke="currentColor" fill="none" stroke-linecap="round"
+                                                        stroke-linejoin="round">
+                                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                                        <rect x="4" y="4" width="16" height="16" rx="2"></rect>
+                                                        <path d="M4 9h6l1 -2l2 4l1 -2h6"></path>
+                                                        <path d="M4 14h16"></path>
+                                                        <path d="M14 17v.01"></path>
+                                                        <path d="M17 17v.01"></path>
+                                                    </svg>
+                                                    <span class="p-2"> IESS </span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link text-red dropdown-toggle" href="#navbar-layout"
+                                    data-bs-toggle="dropdown" data-bs-auto-close="outside" role="button"
+                                    aria-expanded="false">
+                                    <span class="nav-link-icon text-dark d-md-none d-lg-inline-block">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24"
+                                            viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                                            stroke-linecap="round" stroke-linejoin="round">
+                                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                            <rect x="4" y="4" width="6" height="5" rx="2" />
+                                            <rect x="4" y="13" width="6" height="7" rx="2" />
+                                            <rect x="14" y="4" width="6" height="7" rx="2" />
+                                            <rect x="14" y="15" width="6" height="5" rx="2" />
+                                        </svg>
+                                    </span>
+                                    <span class="nav-link-title">
+                                        Transacciones
+                                    </span>
+                                </a>
+                                <div class="dropdown-menu">
+                                    <div class="dropdown-menu-columns">
+                                        <div class="dropdown-menu-column">
+                                            <a class="dropdown-item text-blue" href="./layout-horizontal.html">
+                                                <svg xmlns="http://www.w3.org/2000/svg"
+                                                    class="icon icon-tabler icon-tabler-shopping-cart" width="24"
+                                                    height="24" viewBox="0 0 24 24" stroke-width="2"
+                                                    stroke="currentColor" fill="none" stroke-linecap="round"
+                                                    stroke-linejoin="round">
+                                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                                    <circle cx="6" cy="19" r="2"></circle>
+                                                    <circle cx="17" cy="19" r="2"></circle>
+                                                    <path d="M17 17h-11v-14h-2"></path>
+                                                    <path d="M6 5l14 1l-1 7h-13"></path>
+                                                </svg>
+                                                <span class="p-2"> Compra </span>
+                                            </a>
+                                            <a class="dropdown-item text-blue" href="./layout-boxed.html">
+                                                <svg xmlns="http://www.w3.org/2000/svg"
+                                                    class="icon icon-tabler icon-tabler-building-store" width="24"
+                                                    height="24" viewBox="0 0 24 24" stroke-width="2"
+                                                    stroke="currentColor" fill="none" stroke-linecap="round"
+                                                    stroke-linejoin="round">
+                                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                                    <line x1="3" y1="21" x2="21" y2="21"></line>
+                                                    <path
+                                                        d="M3 7v1a3 3 0 0 0 6 0v-1m0 1a3 3 0 0 0 6 0v-1m0 1a3 3 0 0 0 6 0v-1h-18l2 -4h14l2 4">
+                                                    </path>
+                                                    <line x1="5" y1="21" x2="5" y2="10.85"></line>
+                                                    <line x1="19" y1="21" x2="19" y2="10.85"></line>
+                                                    <path d="M9 21v-4a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v4"></path>
+                                                </svg>
+                                                <span class="p-2"> Venta </span>
+                                                <span class="badge badge-sm bg-green text-uppercase ms-2">New</span>
+                                            </a>
+
+                                        </div>
+                                    </div>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link text-red dropdown-toggle" href="#navbar-extra"
+                                    data-bs-toggle="dropdown" data-bs-auto-close="outside" role="button"
+                                    aria-expanded="false">
+                                    <span class="nav-link-icon text-dark d-md-none d-lg-inline-block">
+                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                            class="icon icon-tabler icon-tabler-wallet" width="24" height="24"
+                                            viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                                            stroke-linecap="round" stroke-linejoin="round">
+                                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                            <path
+                                                d="M17 8v-3a1 1 0 0 0 -1 -1h-10a2 2 0 0 0 0 4h12a1 1 0 0 1 1 1v3m0 4v3a1 1 0 0 1 -1 1h-12a2 2 0 0 1 -2 -2v-12">
+                                            </path>
+                                            <path d="M20 12v4h-4a2 2 0 0 1 0 -4h4"></path>
+                                        </svg>
+                                    </span>
+                                    <span class="nav-link-title">
+                                        Financiero
+                                    </span>
+                                </a>
+                                <div class="dropdown-menu">
+                                    <div class="dropdown-menu-columns">
+                                        <div class="dropend">
+                                            <a class="dropdown-item dropdown-toggle text-blue" href="#sidebar-cards"
+                                                data-bs-toggle="dropdown" data-bs-auto-close="outside" role="button"
+                                                aria-expanded="false">
+                                                <svg xmlns="http://www.w3.org/2000/svg"
+                                                    class="icon icon-tabler icon-tabler-scale" width="24" height="24"
+                                                    viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+                                                    fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                                    <line x1="7" y1="20" x2="17" y2="20"></line>
+                                                    <path d="M6 6l6 -1l6 1"></path>
+                                                    <line x1="12" y1="3" x2="12" y2="20"></line>
+                                                    <path d="M9 12l-3 -6l-3 6a3 3 0 0 0 6 0"></path>
+                                                    <path d="M21 12l-3 -6l-3 6a3 3 0 0 0 6 0"></path>
+                                                </svg>
+                                                <span class="p-2"> Estados Financieros </span>
+                                            </a>
+                                            <div class="dropdown-menu">
+                                                <a href="./cards.html" class="dropdown-item text-azure">
+                                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                                        class="icon icon-tabler icon-tabler-businessplan" width="24"
+                                                        height="24" viewBox="0 0 24 24" stroke-width="2"
+                                                        stroke="currentColor" fill="none" stroke-linecap="round"
+                                                        stroke-linejoin="round">
+                                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                                        <ellipse cx="16" cy="6" rx="5" ry="3"></ellipse>
+                                                        <path d="M11 6v4c0 1.657 2.239 3 5 3s5 -1.343 5 -3v-4"></path>
+                                                        <path d="M11 10v4c0 1.657 2.239 3 5 3s5 -1.343 5 -3v-4"></path>
+                                                        <path d="M11 14v4c0 1.657 2.239 3 5 3s5 -1.343 5 -3v-4"></path>
+                                                        <path d="M7 9h-2.5a1.5 1.5 0 0 0 0 3h1a1.5 1.5 0 0 1 0 3h-2.5">
+                                                        </path>
+                                                        <path d="M5 15v1m0 -8v1"></path>
+                                                    </svg>
+                                                    <span class="p-2"> Estado de Situacion Financiera</span>
+                                                </a>
+                                                <a href="./card-actions.html" class="dropdown-item text-azure">
+                                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                                        class="icon icon-tabler icon-tabler-receipt-refund" width="24"
+                                                        height="24" viewBox="0 0 24 24" stroke-width="2"
+                                                        stroke="currentColor" fill="none" stroke-linecap="round"
+                                                        stroke-linejoin="round">
+                                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                                        <path
+                                                            d="M5 21v-16a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2v16l-3 -2l-2 2l-2 -2l-2 2l-2 -2l-3 2">
+                                                        </path>
+                                                        <path d="M15 14v-2a2 2 0 0 0 -2 -2h-4l2 -2m0 4l-2 -2"></path>
+                                                    </svg>
+                                                    <span class="p-2"> Estado de Resultados Integrales </span>
+                                                </a>
+
+                                            </div>
+                                            <a class="dropdown-item text-blue" href="./layout-boxed.html">
+                                                <svg xmlns="http://www.w3.org/2000/svg"
+                                                    class="icon icon-tabler icon-tabler-building-store" width="24"
+                                                    height="24" viewBox="0 0 24 24" stroke-width="2"
+                                                    stroke="currentColor" fill="none" stroke-linecap="round"
+                                                    stroke-linejoin="round">
+                                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                                    <line x1="3" y1="21" x2="21" y2="21"></line>
+                                                    <path
+                                                        d="M3 7v1a3 3 0 0 0 6 0v-1m0 1a3 3 0 0 0 6 0v-1m0 1a3 3 0 0 0 6 0v-1h-18l2 -4h14l2 4">
+                                                    </path>
+                                                    <line x1="5" y1="21" x2="5" y2="10.85"></line>
+                                                    <line x1="19" y1="21" x2="19" y2="10.85"></line>
+                                                    <path d="M9 21v-4a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v4"></path>
+                                                </svg>
+                                                <span class="p-2"> Contabilidad </span>
+                                                <span class="badge badge-sm bg-green text-uppercase ms-2">New</span>
+                                            </a>
+
+                                        </div>
+                                    </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+
+
+        <div class="page-wrapper">
+            <div class="container-xl">
+                <!-- Titulo -->
+                <div class="page-header d-print-none text-black">
+                    <div class="row g-2 align-items-center">
+                        <div class="col">
+
+                        </div>
+
+                    </div>
+                </div>
+                <!-- Termina el Titulo -->
+            </div>
+            <div class="page-body">
+                <div class="container-xl">
+                    <div class="row row-deck row-cards">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-body col-12">
+                                    <div class="d-flex align-items-center ">
+                                        <div class="header text-blue" id="compania"></div>
+                                    </div>
+                                    {% block contenido%}
+
+                                    {% endblock contenido%}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+        <footer class="footer footer-transparent d-print-none">
+            <div class="container-xl">
+                <div class="row text-center align-items-center flex-row-reverse">
+
+                    <div class="col-12 col-lg-auto mt-3 mt-lg-0">
+                        <ul class="list-inline list-inline-dots mb-0">
+                            <li class="list-inline-item">
+                                Copyright &copy; 2022
+                                <a href="." class="link-secondary">CotriexSoft</a>.
+                                All rights reserved.
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="./changelog.html" class="link-secondary" rel="noopener">
+                                    v1.0.0
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <!-- Librerias Javascript -->
+        <script src="{% static 'assets/static/js/apexcharts.min.js'%}" defer></script>
+        <script src="{% static 'assets/static/js/jsvectormap.min.js'%}" defer></script>
+        <script src="{% static 'assets/static/js/world.js'%}" defer></script>
+        <script src="{% static 'assets/static/js/world-merc.js'%}" defer></script>
+        <!-- Tabler Core -->
+        <script src="{% static 'assets/static/js/tabler.min.js'%}" defer></script>
+        <script src="{% static 'assets/static/js/demo.min.js'%}" defer></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.js"
+            integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="{% static 'assets/static/select2/js/select2.min.js'%}"></script>
+        <script src="{% static 'assets/static/select2/js/i18n/es.js'%}"></script>
+        <script src="{% static 'assets/static/js/jquery.dataTables.js'%}"></script>
+        <script
+            src="https://cdn.jsdelivr.net/npm/datatables-buttons-excel-styles@1.2.0/js/buttons.html5.styles.min.js"></script>
+        <script
+            src="https://cdn.jsdelivr.net/npm/datatables-buttons-excel-styles@1.2.0/js/buttons.html5.styles.templates.min.js"></script>
+        <script type="text/javascript"
+            src="https://cdn.datatables.net/v/dt/jszip-2.5.0/dt-1.12.1/b-2.2.3/b-html5-2.2.3/datatables.min.js"></script>
+        <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
+        <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+
+
+
+        <script src="{% static 'assets/static/js/sum().js'%}"></script>
+         <script src="{% static 'funciones.js' %} "></script>
+        <script> compania()</script>
+        {% block script%}
+        {% endblock script%}
+</body>
+
+</html>

@@ -1,0 +1,129 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block contenido %}
+
+<div class="card mt-2">
+    <div class="card-header">
+        <div class="col-12 text-center text-azure">
+            <h2>LISTA DE PROVISIONES EMPLEADOS</h2>
+
+            <a href="{% url 'empleados:creaRol'%}" class="d-flex justify-content-left  "><i
+                    class="typcn typcn-contacts "></i><small class="pl-2">Agregar Rol</small> </a>
+        </div>
+    </div>
+    <div class="container p-4">
+        <div class="row">
+            <div class="col">
+                <form class="form" id="Remu">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col-1">
+                            <label for="">Seleccione Mes:</label>
+
+                            <select class="form-control text-azure" type="text" name="m_e" id="m_e">
+                                <option value="00"> -- TODO --</option>
+                                <option value="01"> Enero </option>
+                                <option value="02"> Febrero </option>
+                                <option value="03"> Marzo</option>
+                                <option value="04"> Abril </option>
+                                <option value="05"> Mayo </option>
+                                <option value="06"> Junio </option>
+                                <option value="07"> Julio </option>
+                                <option value="08"> Agosto </option>
+                                <option value="09"> Septiembre </option>
+                                <option value="10"> Octubre </option>
+                                <option value="11"> Noviembre </option>
+                                <option value="12"> Diciembre </option>
+
+
+                            </select>
+                        </div>
+
+                        <div class="col-1">
+                            <label for="">Seleccione Año:</label>
+                            <select class="form-control text-azure" name="a_e" id="a_e">
+                                <option value="0000"> -- TODO -- </option>
+                                <option value="2021"> 2021 </option>
+                                <option value="2022"> 2022 </option>
+                                <option value="2023"> 2023</option>
+                                <option value="2024"> 2024 </option>
+                                <option value="2025"> 2025 </option>
+                                <option value="2026"> 2026 </option>
+
+                            </select>
+                        </div>
+                    </div>
+                    <small class="text-pink">Para filtrar la información seleccione mes y año respectivo</small>
+                </form>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="container">
+        <div class="table-responsive p-4 text-center">
+
+            <table class="table table-striped " id="Rem">
+                <thead class="text-center ">
+                    <tr>
+                        <th class="bg-dark">ACCIONES</th>
+                        <th>ID</th>
+                        <th style="width: 150px;">IDENTIFICACION</th>
+                        <th style="width: 300px;">NOMBRES Y APELLIDOS</th>
+                        <th>AÑO</th>
+                        <th>MES</th>
+                        <th>XIII Sueldo</th>
+                        <th class="text-primary">Pago XIII</th>
+                        <th class="text-danger">Total Prov XIII</th>
+
+                        <th>XIV Sueldo</th>
+                        <th class="text-primary">Pago XIV</th>
+                        <th class="text-danger">Total Prov XIV</th>
+
+                        <th>Vacaciones</th>
+                        <th class="text-primary">Pago Vac.</th>
+                        <th class="text-danger">Total Prov Vac.</th>
+
+
+                    </tr>
+                </thead>
+                <tfoot class="justify-content-center">
+                    <tr>
+                        <th></th>
+                        <th></th>
+                        <th style="width: 150px;"></th>
+                        <th style="width: 300px;">TOTALES : ...</th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th class="text-primary"></th>
+                        <th class="text-danger"></th>
+
+                        <th></th>
+                        <th class="text-primary"></th>
+                        <th class="text-danger"></th>
+
+                        <th></th>
+                        <th class="text-primary"></th>
+                        <th class="text-danger"></th>
+
+
+                    </tr>
+                </tfoot>
+
+            </table>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{%block script%}
+<script>
+    var valor = "Provision"
+    genericDatatable(valor)
+</script>
+
+
+{% endblock script%}

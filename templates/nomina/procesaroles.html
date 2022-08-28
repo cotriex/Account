@@ -1,0 +1,104 @@
+{% extends 'index.html' %}
+{% load crispy_forms_tags %}
+
+{% block nav%}
+<div class="az-content-left az-content-left-components">
+    <div class="component-item">
+        <label>Inicio</label>
+        <nav class="nav flex-column">
+            <a href="/" class="nav-link">Inicio</a>
+        </nav>
+        <label>Nomina</label>
+        <nav class="nav flex-column">
+            <a href="{%url 'empleados:listaNomina'%}" class="nav-link">Listar Roles</a>
+            <a href="{%url 'empleados:creaRol'%}" class="nav-link active">Nuevo Rol</a>
+
+        </nav>
+
+    </div><!-- component-item -->
+
+</div>
+
+{% endblock nav%}
+
+{% block blank %}
+<div class="main-panel">
+    <div class="row justify-content-center">
+        <div class=" col-lg-11 grid-margin stretch-card">
+            <div class="card ">
+                <div class="card-title pt-1 text-center">
+                    <h4 class="card-title pt-3 ">CREAR NUEVO ROL</h4>
+                </div>
+                <div class="card-body">
+
+                    <form class="forms-sample" method="POST">
+                        {% csrf_token%}
+                        <div class="form-row">
+                            <div class="form-group col-2 mb-0">
+                                {{form.identificacion|as_crispy_field}}
+                            </div>
+                            <div class="form-group col-2 mb-0">
+                                {{ form.ano|as_crispy_field }}
+                            </div>
+                            <br>
+                            <div class="form-group col-2 mb-0">
+                                {{ form.mes|as_crispy_field }}
+
+                            </div>
+                            <div class="form-group col-2 mb-0">
+                                {{ form.valor25|as_crispy_field }}
+
+                            </div>
+                            <div class="form-group col-2 mb-0">
+                                {{ form.valor50|as_crispy_field }}
+
+                            </div>
+                            <div class="form-group col-2 mb-0">
+                                {{ form.valor100|as_crispy_field }}
+
+                            </div>
+                            <h6 class="col-12 d-flex justify-content-center">Provisiones</h6>
+                            <br>
+                            <div class="form-group col-2 mb-0">
+                                {{ form.valorXIII|as_crispy_field }}
+
+                            </div>
+                            <div class="form-group col-2 mb-0">
+                                {{ form.valorXIV|as_crispy_field }}
+
+                            </div>
+                            <div class="form-group col-2 mb-0">
+                                {{ form.vacaciones|as_crispy_field }}
+
+                            </div>
+                            <div class="form-group col-2 mb-0">
+                                {{ form.fondoReserva|as_crispy_field }}
+
+                            </div>
+                            <h6 class="col-12 d-flex justify-content-center">Calculo IESS</h6>
+                            <div class="form-group col-2 mb-0">
+                                {{ form.IESSpatr|as_crispy_field }}
+
+                            </div>
+                            <div class="form-group col-2 mb-0">
+                                {{ form.IESSpersonal|as_crispy_field }}
+
+                            </div>
+                           
+                        </div>
+                            <div class="d-flex justify-content-end">
+                                <button type="submit" class="mr-2 btn btn-sm badge-warning">Crear</button>
+
+                                <a type="button" href="{%url 'empleados:listaNomina'%}"
+                                    class="btn btn-sm badge-secondary">Cancelar</a>
+                            
+                                </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
